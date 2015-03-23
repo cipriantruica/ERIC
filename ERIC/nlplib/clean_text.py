@@ -50,7 +50,6 @@ class CleanText:
 	#expand contrations
 	#only for english
 	def expandContractions(self, text, language='EN'):
-		#print language
 		def replace(match):
 			return contractions_dict[match.group(0)]
 		if language == 'EN':
@@ -79,10 +78,9 @@ class CleanText:
 	#function that cleans text
 	#depending on the language
 	def cleanText(self, text, language = 'EN'):
-		print language
 		text = self.replaceUTF8Char(self.removeURLs(self.removeTags(self.removeScripts(text))))
 		text = self.expandContractions(text, language)
 		#text = self.removeStopWords(text.lower(), language)
 		#text = self.removePunctuation(text)
-		return self.removeMultipleSpaces(text)
+		return self.removeMultipleSpaces(text.strip())
 			
