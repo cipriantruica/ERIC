@@ -15,6 +15,7 @@ class Documents(Document):
 	#createdAt = ComplexDateTimeField(default=datetime.now) 
 	#the date inside the document if any
 	date = DateTimeField()
+	language = StringField()
 	authors = ListField(EmbeddedDocumentField("Author"), required = False)
 	tags = ListField()
 	words = ListField(EmbeddedDocumentField("Word"))

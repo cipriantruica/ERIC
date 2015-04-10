@@ -27,6 +27,7 @@ def populateDatabase(elem, language='EN'):
 		document.rawText = elem[1]
 		document.intText = cleanText.cleanText(elem[1], language)
 		document.date =elem[2]
+		document.language = language
 		#authors 
 		#verify list's length - maybe it does not have the author field
 		if len(elem) > 4:
