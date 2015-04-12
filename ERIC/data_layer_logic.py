@@ -1,9 +1,13 @@
+# coding: utf-8
+import sys  
 import utils
 from models.mongo_models import *
 from nlplib.lemmatize_text import LemmatizeText
 from nlplib.named_entities import NamedEntitiesRegonizer
 from nlplib.clean_text import CleanText
 
+reload(sys)  
+sys.setdefaultencoding('utf8')
 
 # params:
 # list with the fallowing elemets:
@@ -48,7 +52,7 @@ def populateDatabase(elem, language='EN'):
 #this functions adds to the documents collection the cleanText and words labels
 def createCleanTextField(startDate, endDate, language):
 	documents = Documents.objects(Q(createdAt__gte = startDate) & Q(createdAt__lt = endDate)).only("id", "intText").timeout(False)
-	for document in documents:
+	for document in documents:		
 		if document.intText and document.intText != " ":
 			lemmas = LemmatizeText(document.intText, language)
 			lemmas.createLemmaText()

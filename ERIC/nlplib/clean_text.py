@@ -61,13 +61,13 @@ class CleanText:
 
 	#remove stopwords for English and French
 	def removeStopWords(self, text, language='EN'):
-		text = text.decode("utf8")
+		text = text.decode("utf8").encode("utf8")
 		if language == 'EN':
 			return ' '.join([word for word in text.split() if word not in cachedStopWords_en]).encode("utf8")
 		elif language == 'FR':			
 			return ' '.join([word for word in text.split() if word not in cachedStopWords_fr]).encode("utf8")
 
-	#split string by charcter
+	#split string by character
 	def splitString(self, str, ch = ',', rch = ''):
 		return [e.replace(' ', rch) for e in str.split(ch)]
 
