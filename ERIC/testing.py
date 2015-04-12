@@ -101,10 +101,9 @@ def buildNamedEntities():
 
 def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', language='EN'):
 	connectDB(dbname)
-	#Documents.drop_collection()
-	#populateDB(filename, csv_delimiter, header, language)
-	#Documents.objects(intText__exists = False).delete()
-	#this curretnly work only for English
+	Documents.drop_collection()
+	populateDB(filename, csv_delimiter, header, language)
+	Documents.objects(intText__exists = False).delete()	
 	clean(language)
 	#NamedEntities.drop_collection()
 	#buildNamedEntities()
