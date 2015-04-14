@@ -1,5 +1,6 @@
 # coding: utf-8
 #dictionary for special characters utf-8 to ascii
+
 specialchar_dic={
 	"’": "'",
 	"„": "\"",
@@ -8,9 +9,10 @@ specialchar_dic={
 	"«": "<<",
 	"»": ">>",
 	"…": "...",
-	"–": "-",
+	"—": "-",
 	"¡": "!",
-	"¿": "?"
+	"¿": "?",
+	"©": " "
 }
 
 #dictionary of contractions

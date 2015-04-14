@@ -1,10 +1,13 @@
 # coding: utf-8
+import sys
 import re
 import static
 import string
 import unicodedata
 from nltk.corpus import stopwords
 
+reload(sys)  
+sys.setdefaultencoding('utf8')
 
 punctuation = '!"#$%&\'()*+,./:;<=>?@[\\]^_`{|}~'
 cachedStopWords_en = stopwords.words("english")
