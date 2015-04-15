@@ -10,15 +10,25 @@ from concurrent.futures import ThreadPoolExecutor
 from data_layer_logic import *
 from models.mongo_models import *
 
-
-
-
 #this script receives 5 parameters
 # 1 - filename
 # 2 - the csv delimiter: t - tab, c - coma, s - semicolon
 # 3 - integer: 1 csv has header, 0 csv does not have hearer
 # 4 - integer - nr of threads
 # 5 - lematizer/stemmer
+
+def getDates():
+	documents = Documents.objects.only("createdAt")
+	no_docs = documents.count()
+	last_docDate = None
+	last_wordDate = None
+	if no_docs > 0:
+		last_docDate = documents[no_docs-1].createdAt
+	words = Words.objects.only("createdAt")
+	no_words = words.count()
+	if no_words > 0:
+		last_wordDate = words[no_words-1].createdAt
+	return last_docDate, last_wordDate
 
 def populateDB(filename, csv_delimiter, header, language):
 	start = time.time() 
@@ -28,13 +38,15 @@ def populateDB(filename, csv_delimiter, header, language):
 	end = time.time() 
 	print "time populate db:", (end - start)
 
-def clean(language):	
-	documents = Documents.objects.only("createdAt")
+def clean(language, last_docDate):
+	if not last_docDate:
+		documents = Documents.objects.only("createdAt")
+	else:
+		documents = Documents.objects(Q(createdAt__gte = last_docDate)).only("createdAt")
 	no_docs = documents.count()
 	
 	list_of_dates = []
 	idx = 0
-
 	for document in documents:		
 		if idx%100 == 0 or idx + 1 == no_docs:
 			list_of_dates.append(document.createdAt)
@@ -71,10 +83,11 @@ def clean(language):
 	#createCleanTextField(list_of_dates[1], list_of_dates[2], language)
 
 	#delete documents without cleanText
-	#Documents.objects(cleanText__exists = False).delete();
+	Documents.objects(cleanText__exists = False).delete();
 
 def buildNamedEntities():
 	print "sunt in build entities"
+
 	documents = Documents.objects.only("createdAt")
 	no_docs = documents.count()
 	
@@ -101,11 +114,14 @@ def buildNamedEntities():
 
 def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', language='EN'):
 	connectDB(dbname)
-	Documents.drop_collection()
-	Words.drop_collection()
+	#Documents.drop_collection()
+	#Words.drop_collection()
+	last_docDate, last_wordDate = getDates()
 	populateDB(filename, csv_delimiter, header, language)
 	Documents.objects(intText__exists = False).delete()	
-	clean(language)
+	clean(language, last_docDate)
+	print 'date for update indexes:', last_wordDate
+	print 'last date doc:', last_docDate
 	#NamedEntities.drop_collection()
 	#buildNamedEntities()
 	

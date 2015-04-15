@@ -119,6 +119,7 @@ class Docs(EmbeddedDocument):
 
 class NamedEntities(Document):
 	docID = ObjectIdField()
+	createdAt = DateTimeField(default=datetime.now)
 	gpe = ListField()
 	person = ListField()
 	organization = ListField()
