@@ -44,9 +44,12 @@ function updateInvertedIndexUpdate(startDate){
 					var item = word.next();
 					docids_orig = item.docIDs;
 				}
-				docids_vec = dids.concat(docids_orig.filter(function (item) {
-								return dids.indexOf(item) < 0;
-								}));
+				for(var i in dids){
+					docids_vec.push(dids[i]);
+				}
+				for(var i in docids_orig){
+					docids_vec.push(docids_orig[i])
+				}
 				db.inverted_index.update({word: item._id}, {$set: {docIDs: docids_vec}});
 		}else{
 			doc = {word: item._id, createdAt: new Date(), docIDs: dids};

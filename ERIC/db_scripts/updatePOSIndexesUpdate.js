@@ -34,15 +34,23 @@ function updatePOSIndex(startDate){
 				var word = db.pos_index.find({word: item._id}, {pos: 1, _id:0});
 				var pos_orig = []
 				var pos_vec = []
+				var pos_vec_final = []
 				while(word.hasNext()){
 					var item = word.next();
 					pos_orig = item.pos;
 				}
-				pos_vec = pos_uniq.concat(pos_orig.filter(function (item) {
-								return pos_uniq.indexOf(item) < 0;
-								}));
-				print (pos_vec);
-				//db.pos_index.update({word: item._id}, {$set: {pos: pos_vec}});
+				for (var i in pos_uniq){
+					pos_vec.push(pos_uniq[i]);
+				}
+				for (var i in pos_orig){
+					pos_vec.push(pos_orig[i]);
+				}
+				pos_vec_final = pos_vec.reduce(function(a,b){
+						if (a.indexOf(b) < 0 ) 	{
+							a.push(b); 
+						}
+						return a;   },[]);
+				db.pos_index.update({word: item._id}, {$set: {pos: pos_vec_final}});
 		}else{
 			doc = {word: item._id, createdAt: new Date(), pos: pos_uniq};
 			db.pos_index.insert(doc);
@@ -51,7 +59,6 @@ function updatePOSIndex(startDate){
 	var end = new Date();
 	print ((end.getTime() - start.getTime() + time.timeMillis)/1000.0)
 	db.temp_collection.drop();
-
 }
 
 updatePOSIndex(ISODate("2015-04-15T23:01:05.176Z"))

@@ -59,7 +59,12 @@ function updateVocabularyUpdate(startDate){
 					var item = word.next();
 					docids_orig = item.docIDs;
 				}
-				docids_vec = dids.concat(docids_orig);
+				for(var i in docids_orig){
+					docids_vec.push(docids_orig[i]);
+				}
+				for(var i in dids){
+					docids_vec.push(dids[i]);
+				}
 				var n = docids_vec.length;
 				var widf = Math.round(Math.log(noDocs/n) * 100)/100;
 				db.vocabulary.update({word: item._id}, {$set: {idf: widf, docIDs: docids_vec}});
