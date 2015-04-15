@@ -30,29 +30,25 @@ function updateInvertedIndexUpdate(startDate){
 	var items = db.inverted_index2.find().addOption(DBQuery.Option.noTimeout);
 	while(items.hasNext()){
 		var item = items.next();
+		var wordID = item._id;
 		var dids = []
 		for (var i in item.value.ids){
 			dids.push(new ObjectId(item.value.ids[i]));
 		}
 
-		var exists = db.inverted_index.count({word: item._id});
+		var exists = db.inverted_index.count({word: wordID});
 		if (exists > 0){
-				var word = db.inverted_index.find({word: item._id}, {docIDs: 1, _id:0});
+				var word = db.inverted_index.find({word: wordID}, {docIDs: 1, _id:0});
 				var docids_orig = []
 				var docids_vec = []
 				while(word.hasNext()){
-					var item = word.next();
-					docids_orig = item.docIDs;
+					var w = word.next();
+					docids_orig = w.docIDs;
 				}
-				for(var i in dids){
-					docids_vec.push(dids[i]);
-				}
-				for(var i in docids_orig){
-					docids_vec.push(docids_orig[i])
-				}
-				db.inverted_index.update({word: item._id}, {$set: {docIDs: docids_vec}});
+				docids_vec = docids_orig.concat(dids);
+				db.inverted_index.update({word: wordID}, {$set: {docIDs: docids_vec}});
 		}else{
-			doc = {word: item._id, createdAt: new Date(), docIDs: dids};
+			doc = {word: wordID, createdAt: new Date(), docIDs: dids};
 			db.inverted_index.insert(doc);
 		}
 	}

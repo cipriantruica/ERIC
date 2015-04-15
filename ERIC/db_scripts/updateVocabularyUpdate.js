@@ -48,30 +48,26 @@ function updateVocabularyUpdate(startDate){
 	var items = db.temp_collection.find().addOption(DBQuery.Option.noTimeout);
 	while(items.hasNext()){
 		var item = items.next();
+		var wordID = item._id;
 		var dids = []
 		dids = item.value.ids
-		var exists = db.vocabulary.count({word: item._id});
+		var exists = db.vocabulary.count({word: wordID});
 		if (exists > 0){
-				var word = db.vocabulary.find({word: item._id}, {docIDs: 1, _id:0});
+				var word = db.vocabulary.find({word: wordID}, {docIDs: 1, _id:0});
 				var docids_orig = [];
 				var docids_vec = [];
 				while(word.hasNext()){
-					var item = word.next();
-					docids_orig = item.docIDs;
+					var w = word.next();
+					docids_orig = w.docIDs;
 				}
-				for(var i in docids_orig){
-					docids_vec.push(docids_orig[i]);
-				}
-				for(var i in dids){
-					docids_vec.push(dids[i]);
-				}
+				docids_vec = docids_orig.concat(dids);
 				var n = docids_vec.length;
 				var widf = Math.round(Math.log(noDocs/n) * 100)/100;
-				db.vocabulary.update({word: item._id}, {$set: {idf: widf, docIDs: docids_vec}});
+				db.vocabulary.update({word: wordID}, {$set: {idf: widf, docIDs: docids_vec}});
 		}else{
 			var n = dids.length;
 			var widf = Math.round(Math.log(noDocs/n) * 100)/100;
-			doc = {word: item._id, idf: widf, createdAt: new Date(), docIDs: dids};
+			doc = {word: wordID, idf: widf, createdAt: new Date(), docIDs: dids};
 			db.vocabulary.insert(doc);
 		}
 	}

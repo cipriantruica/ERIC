@@ -24,35 +24,31 @@ function updatePOSIndex(startDate){
 	var items = db.temp_collection.find().addOption(DBQuery.Option.noTimeout);
 	while(items.hasNext()){
 		var item = items.next();
+		var wordID = item._id;
 		var pos_uniq = item.value.pos.reduce(function(a,b){
 			if (a.indexOf(b) < 0 ) 	{
 				a.push(b); 
 			}
 			return a;   },[]);
-		var exists = db.pos_index.count({word: item._id});
+		var exists = db.pos_index.count({word: wordID});
 		if (exists > 0){
-				var word = db.pos_index.find({word: item._id}, {pos: 1, _id:0});
+				var word = db.pos_index.find({word: wordID}, {pos: 1, _id:0});
 				var pos_orig = []
 				var pos_vec = []
 				var pos_vec_final = []
 				while(word.hasNext()){
-					var item = word.next();
-					pos_orig = item.pos;
+					var v = word.next();
+					pos_orig = v.pos;
 				}
-				for (var i in pos_uniq){
-					pos_vec.push(pos_uniq[i]);
-				}
-				for (var i in pos_orig){
-					pos_vec.push(pos_orig[i]);
-				}
+				pos_vec = pos_uniq.concat(pos_orig);
 				pos_vec_final = pos_vec.reduce(function(a,b){
 						if (a.indexOf(b) < 0 ) 	{
 							a.push(b); 
 						}
 						return a;   },[]);
-				db.pos_index.update({word: item._id}, {$set: {pos: pos_vec_final}});
+				db.pos_index.update({word: wordID}, {$set: {pos: pos_vec_final}});
 		}else{
-			doc = {word: item._id, createdAt: new Date(), pos: pos_uniq};
+			doc = {word: wordID, createdAt: new Date(), pos: pos_uniq};
 			db.pos_index.insert(doc);
 		}
 	}
