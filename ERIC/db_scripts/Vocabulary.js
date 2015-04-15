@@ -61,9 +61,28 @@ function createVocabulary(){
 
 	reduceFunction = function(key, values) {
 		var result = {"ids": []};
+		var intermediar = {"ids": []};
 		values.forEach(function (v) {
-			result.ids = v.ids.concat(result.ids);
+			intermediar.ids = v.ids.concat(intermediar.ids);
 		});
+		//remove duplicates
+		for (i in intermediar.ids){
+			if(i > 0){
+				var ok = true;
+				for (j in result.ids){
+					if (result.ids[j].docID.toString() == intermediar.ids[i].docID.toString()){
+						ok = false;
+					}
+				}
+				if(ok){
+					result.ids.push(intermediar.ids[i]);
+				}
+			}
+			else{
+				result.ids.push(intermediar.ids[i]);
+			}
+			
+		}
 		return result;
 	};
 
@@ -87,9 +106,10 @@ function createVocabulary(){
 	db.temp_collection.drop();
 }
 
-
-
 createVocabulary()
+
+
+db.vocabulary.find({"word": "back"}).pretty()
 
 function testing(n){
 	for(var i=0; i<n; i++){

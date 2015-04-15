@@ -3,10 +3,10 @@ function createInvertedIndex(){
 	db.inverted_index2.drop();
 	
 	mapFunction = function() {
-		var ids = []
-		ids.push(this.docID);
-		for (var idx=0; idx<this.words.length; idx++){
-			var key = this.words[idx].word;
+		var ids = [];
+		ids.push(this.docID.valueOf())
+		for (var i in this.words){
+			var key = this.words[i].word;
 			var value = { "ids": ids};
 			emit(key, value);
 		}
@@ -15,9 +15,12 @@ function createInvertedIndex(){
 	reduceFunction = function(key, values) {
 		var result = {"ids": []};
 		values.forEach(function (v) {
-			result.ids = v.ids.concat(result.ids);
+			result.ids = v.ids.concat(result.ids.filter(function (item) {
+								return v.ids.indexOf(item) < 0;
+								}));
 		});
-		return result;
+
+		return result
 	};
 
 	//var time = db.documents.mapReduce( mapFunction, reduceFunction, { out: "inverted_index2" });
@@ -28,7 +31,11 @@ function createInvertedIndex(){
 	var items = db.inverted_index2.find().addOption(DBQuery.Option.noTimeout);
 	while(items.hasNext()){
 		var item = items.next();
-		doc = {word: item._id, createdAt: new Date(), docIDs: item.value.ids};
+		var dids = []
+		for (var i in item.value.ids){
+			dids.push(new ObjectId(item.value.ids[i]));
+		}
+		doc = {word: item._id, createdAt: new Date(), docIDs: dids};
 		db.inverted_index.insert(doc);
 	}
 	var end = new Date();
@@ -37,6 +44,8 @@ function createInvertedIndex(){
 }
 
 createInvertedIndex()
+
+ db.inverted_index.find({"word": "back"}).pretty()
 
 function testing(n){
 	for(var i=0; i<n; i++){
