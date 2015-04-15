@@ -14,7 +14,7 @@ DELIMITER="t"
 LMTZ=1
 OP=1
 LANGUAGE=$2
-
+path="times/mongo/"
 
 getCurrentTimeInMili() {
   date +'%H 3600 * %M 60 * + %S + 1000 * %N 1000000 / + p' | dc
@@ -27,9 +27,9 @@ for i in `seq 1 $N`
 do
 	echo "test_$i"
 	START=$(getCurrentTimeInMili)
-	python testing.py $FILE $DELIMITER $HEADER $DB $LANGUAGE >> "laVoixDuNord_perforance"
+	python testing.py $FILE $DELIMITER $HEADER $DB $LANGUAGE >> $path"laVoixDuNord_perforance"
 	END=$(getCurrentTimeInMili)
 	DIFF=$(( $END - $START ))
-	echo "*******************" >> "laVoixDuNord_perforance"
-	echo $DIFF >> "laVoixDuNord_script_times_populatedb"
+	echo "*******************" >> $path"laVoixDuNord_perforance"
+	echo $DIFF >> $path"laVoixDuNord_script_times_populatedb"
 done;

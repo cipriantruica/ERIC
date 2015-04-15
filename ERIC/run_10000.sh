@@ -27,9 +27,9 @@ for i in `seq 1 $N`
 do
 	echo "test_$i"
 	START=$(getCurrentTimeInMili)
-	python testing.py $FILE $DELIMITER $HEADER $DB $LANGUAGE >> "10000_perforance"
+	python testing.py $FILE $DELIMITER $HEADER $DB $LANGUAGE >> $path"10000_perforance"
 	END=$(getCurrentTimeInMili)
 	DIFF=$(( $END - $START ))
-	echo "********************************" >> "10000_perforance"
-	echo $DIFF >> "10000_script_times_populatedb"
+	echo "********************************" >> $path"10000_perforance"
+	echo $DIFF >> $path"10000_script_times_populatedb"
 done;

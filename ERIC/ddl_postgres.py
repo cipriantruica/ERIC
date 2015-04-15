@@ -44,7 +44,6 @@ def populateDatabase(elem, language='EN'):
 		#authors 
 		#verify list's length - maybe it does not have the author field
 		if len(elem) > 4:
-			
 			for name in utils.getAuthorName(elem[4]):
 				author = Authors.get(firstname=name[0].decode("utf8"), lastname=name[1].decode("utf8"))
 				if not author:
@@ -74,31 +73,39 @@ def populateDatabase(elem, language='EN'):
 @db_session
 def createCleanTextField(startDate, endDate, language):
 	#print startDate, endDate
-	documents = pny.select(d for d in Documents if d.createdAt >= startDate and d.createdAt < endDate)
+	documents = pny.select(d for d in Documents if d.createdAt >= startDate and d.createdAt < endDate).for_update()
 	for document in documents:
 		if document.intText and document.intText != " ":
 			lemmas = LemmatizeText(document.intText, language)
 			lemmas.createLemmaText()
 			if lemmas.cleanText and lemmas.cleanText != " ":
 				document.cleanText = lemmas.cleanText.decode("utf8")
+				commit()
 				lemmas.createLemmas()				
 				for word in lemmas.wordList:
-					p = POS.get(pos=word.wtype)
+					#original
+					p = POS.get_for_update(pos=word.wtype)
 					if not p:
-						p = POS(pos=word.wtype)					
-					w = Words.get(word=word.word.decode("utf8"))
+						p = POS(pos=word.wtype)	
+						commit()			
+					w = Words.get_for_update(word=word.word.decode("utf8"))
 					if not w:
 						w = Words(word=word.word.decode("utf8"))
-					pw = Pos_Words.get(posID = p, wordID = w)
+						commit()
+					pw = Pos_Words.get_for_update(posID = p, wordID = w)
 					if not pw:
 						pw = Pos_Words(posID = p, wordID = w)
-					pi = POSIndex.get(posID = p, wordID = w, documentID=document)
+						commit()
+					pi = POSIndex.get_for_update(posID = p, wordID = w, documentID=document)
 					if not pi:
 						pi = POSIndex(posID = p, wordID = w, documentID=document)
-					v = Vocabulary.get(documentID=document, wordID=w, count=round(word.count,2), tf=round(word.tf,2))
+						commit()
+					v = Vocabulary.get_for_update(documentID=document, wordID=w, count=round(word.count,2), tf=round(word.tf,2))
 					if not v:
 						v = Vocabulary(documentID=document, wordID=w, count=round(word.count,2), tf=round(word.tf,2))
-
+						commit()
+					
+					
 
 
 """

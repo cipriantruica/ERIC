@@ -77,7 +77,7 @@ function createVocabulary(){
 	while(items.hasNext()){
 		var item = items.next();
 		var n = item.value.ids.length;
-		var widf = Math.log(noDocs/n);
+		var widf = Math.round(Math.log(noDocs/n) * 100)/100;
 		doc = {word: item._id, idf: widf, createdAt: new Date(), docIDs: item.value.ids};
 		db.vocabulary.insert(doc);
 	}

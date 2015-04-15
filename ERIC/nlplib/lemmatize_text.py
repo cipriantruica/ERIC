@@ -6,6 +6,8 @@ from nltk.corpus import wordnet
 from nltk.tag.stanford import POSTagger
 
 
+
+
 #TO_DO modify this class to accept french also
 class LemmatizeText:
 	class Word():
@@ -48,7 +50,7 @@ class LemmatizeText:
 			#calculate TF
 			maxF = self.wordList[-1].count
 			for idx in xrange(0,len(self.wordList), 1):
-				self.wordList[idx].tf = 0.5 + (0.5 * self.wordList[idx].count)/maxF
+				self.wordList[idx].tf = round(0.5 + (0.5 * self.wordList[idx].count)/maxF, 2)
 
 	def append(self, word, wtype):
 		if word:

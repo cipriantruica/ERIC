@@ -3,6 +3,7 @@ import threading
 import time
 import gc
 import shutil
+import math
 from datetime import timedelta
 from multiprocessing.pool import ThreadPool
 from multiprocessing import cpu_count
@@ -31,11 +32,21 @@ def populateDB(filename, csv_delimiter, header, language):
 	print "time populate db:", (end - start)
 
 @db_session
-def clean(language):	
+def updateVocabulary():
 	documents = pny.select(d for d in Documents).order_by(Documents.createdAt)
 	no_docs = len(documents)
+	#update vocabulary with idf
+	words = Words.select()
+	for word in words:
+		vocabulary = Vocabulary.select(lambda v: v.wordID == word)
+		noDocWords = len(vocabulary)
+		for v in vocabulary:
+			v.idf = round(math.log(float(no_docs)/float(noDocWords)))
 
-	
+@db_session
+def getListOfDates():
+	documents = pny.select(d for d in Documents).order_by(Documents.createdAt)
+	no_docs = len(documents)
 	list_of_dates = []
 	idx = 0
 
@@ -45,21 +56,35 @@ def clean(language):
 		idx += 1
 	#add one second to the last date
 	list_of_dates[-1] += timedelta(0,1)
-		
+	return list_of_dates
+
+def clean(language):	
+	list_of_dates = getListOfDates()
+
 	no_threads = cpu_count()
 	start = time.time()
-		
+	
 	
 	#method 2
+	"""
 	with ThreadPoolExecutor(max_workers = no_threads) as e:
 		for idx in xrange(0, len(list_of_dates)-1, 1) :
-			 e.submit(createCleanTextField, list_of_dates[idx], list_of_dates[idx+1], language)
+			try:
+				e.submit(createCleanTextField, list_of_dates[idx], list_of_dates[idx+1], language)
+			except Exception as e:
+				print e
+	"""
 	
 	
 	
 	#TO_DO this is just a test, remove this line
-	#createCleanTextField(list_of_dates[0], list_of_dates[1], language)	
-	#createCleanTextField(list_of_dates[1], list_of_dates[2], language)
+	for idx in xrange(0, len(list_of_dates)-1, 1) :
+		createCleanTextField(list_of_dates[idx], list_of_dates[idx+1], language)
+	#createCleanTextField(list_of_dates[0], list_of_dates[1], language)
+
+	
+	updateVocabulary()
+
 	end = time.time() 
 	print "time clean text:", (end - start)
 	#delete documents without cleanText
@@ -96,8 +121,6 @@ def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', langu
 	dropAllTables()
 	createAllTables()
 	populateDB(filename, csv_delimiter, header, language)
-	
-	#Documents.objects(intText__exists = False).delete()	
 	clean(language)
 	#NamedEntities.drop_collection()
 	#buildNamedEntities()
