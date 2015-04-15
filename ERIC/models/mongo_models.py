@@ -18,7 +18,8 @@ class Documents(Document):
 	language = StringField()
 	authors = ListField(EmbeddedDocumentField("Author"), required = False)
 	tags = ListField()
-	words = ListField(EmbeddedDocumentField("Word"))
+	#words = ListField(EmbeddedDocumentField("Word"))
+	
 
 	meta = {
 		'ordering': ['+createdAt'],
@@ -28,13 +29,14 @@ class Documents(Document):
 				'unique': True,
 				'sparse': False
 			},
-			{
-				'fields': ['words']
-			}
+			
 		]
 	}
 
 	"""
+	{
+				'fields': ['words']
+			}
 	,
 	{
 		'fields': ["$cleanText"],
@@ -57,6 +59,11 @@ class Author(EmbeddedDocument):
 	firstname = StringField(max_length = 255)
 	lastname = StringField(max_length = 255)
 
+class Words(Document):
+	docID = ObjectIdField()
+	createdAt = DateTimeField(default=datetime.now)
+	words = ListField(EmbeddedDocumentField("Word"))
+
 class Word(EmbeddedDocument):
 	_auto_id_field = False
 	word = StringField(max_length = 255)
@@ -64,7 +71,6 @@ class Word(EmbeddedDocument):
 	count = FloatField()
 	tf = FloatField()
 	idf = FloatField()
-	tfidf = FloatField()
 
 	meta = {
 		'ordering': ['-word']

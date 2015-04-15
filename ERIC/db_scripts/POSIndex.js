@@ -21,7 +21,8 @@ function createPOSIndex(){
 		return result;
 	};
 
-	var time = db.documents.mapReduce( mapFunction, reduceFunction, { out: "temp_collection" });
+	//var time = db.documents.mapReduce( mapFunction, reduceFunction, { out: "temp_collection" });
+	var time = db.words.mapReduce( mapFunction, reduceFunction, { out: "temp_collection" });
 
 	var start = new Date();
 	var items = db.temp_collection.find().addOption(DBQuery.Option.noTimeout);

@@ -53,7 +53,7 @@ function createVocabulary(){
 	mapFunction = function() {
 		for (var idx=0; idx<this.words.length; idx++){
 			var key = this.words[idx].word;
-			var ids = {"docID": this._id, "count": this.words[idx].count, "tf": this.words[idx].tf};
+			var ids = {"docID": this.docID, "count": this.words[idx].count, "tf": this.words[idx].tf};
 			var value = { "ids": [ids]};
 			emit(key, value);
 		}
@@ -67,7 +67,8 @@ function createVocabulary(){
 		return result;
 	};
 
-	var time = db.documents.mapReduce( mapFunction, reduceFunction, { out: "temp_collection" });
+	//var time = db.documents.mapReduce( mapFunction, reduceFunction, { out: "temp_collection" });
+	var time = db.words.mapReduce( mapFunction, reduceFunction, { out: "temp_collection" });
 	//print(time.timeMillis/1000.0);
 	
 	var noDocs = db.documents.count();

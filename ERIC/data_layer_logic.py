@@ -57,11 +57,16 @@ def createCleanTextField(startDate, endDate, language):
 			lemmas = LemmatizeText(document.intText, language)
 			lemmas.createLemmaText()
 			if lemmas.cleanText and lemmas.cleanText != " ":
+				wordsColl = Words()
 				lemmas.createLemmas()
 				words = [Word(word=word.word, tf=word.tf, count=word.count, wtype=word.wtype) for word in lemmas.wordList]
+				wordsColl.docID = document.id
+				wordsColl.words = words
 				try:
 					#update document
-					document.update(set__cleanText=lemmas.cleanText, set__words=words)
+					#document.update(set__cleanText=lemmas.cleanText, set__words=words)
+					document.update(set__cleanText=lemmas.cleanText)
+					wordsColl.save()
 				except Exception as e:
 					print "Update Error!!!", e
 

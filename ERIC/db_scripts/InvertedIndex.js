@@ -4,7 +4,7 @@ function createInvertedIndex(){
 	
 	mapFunction = function() {
 		var ids = []
-		ids.push(this._id);
+		ids.push(this.docID);
 		for (var idx=0; idx<this.words.length; idx++){
 			var key = this.words[idx].word;
 			var value = { "ids": ids};
@@ -20,7 +20,8 @@ function createInvertedIndex(){
 		return result;
 	};
 
-	var time = db.documents.mapReduce( mapFunction, reduceFunction, { out: "inverted_index2" });
+	//var time = db.documents.mapReduce( mapFunction, reduceFunction, { out: "inverted_index2" });
+	var time = db.words.mapReduce( mapFunction, reduceFunction, { out: "inverted_index2" });
 	//print(time.timeMillis/1000.0);
 
 	var start = new Date();
