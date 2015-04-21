@@ -43,3 +43,9 @@ time clean text: 221.937120914
 date for update indexes: None
 last date doc: None
 ********************************
+time populate db: 5.70066714287
+Update Error!!! Tried to save duplicate unique keys (E11000 duplicate key error index: ERICDB.words.$createdAt_1 dup key: { : new Date(1429610861170) })
+time clean text: 228.94400692
+date for update indexes: None
+last date doc: None
+********************************

@@ -3,25 +3,25 @@ createPOSIndex()
 createVocabulary()
 
 function testing(n){
-	print("pos={");
+	print("pos=[");
 	for(var i=0; i<n; i++){
 		createPOSIndex();
 		print(",");
 	}
-	print("}");
-	print("iv={");
+	print("]");
+	print("iv=[");
 	for(var i=0; i<n; i++){
 		createInvertedIndex();
 		print(",");
 	}
-	print("}");
+	print("]");
 	
-	print("vocab={");
+	print("vocab=[");
 	for(var i=0; i<n; i++){
 		createVocabulary();
 		print(",");
 	}
-	print("}");
+	print("]");
 	print("print \"pos:\", round(sum(pos)/len(pos),2)");
 	print("print \"iv:\", round(sum(iv)/len(iv),2)");
 	print("print \"vocabulary:\", round(sum(vocab)/len(vocab),2)");

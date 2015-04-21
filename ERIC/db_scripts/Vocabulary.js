@@ -63,9 +63,11 @@ function createVocabulary(){
 		var result = {"ids": []};
 		var intermediar = {"ids": []};
 		values.forEach(function (v) {
-			intermediar.ids = v.ids.concat(intermediar.ids);
+			//intermediar.ids = v.ids.concat(intermediar.ids);
+			result.ids = v.ids.concat(result.ids);
 		});
 		//remove duplicates
+		/*
 		for (i in intermediar.ids){
 			if(i > 0){
 				var ok = true;
@@ -83,6 +85,7 @@ function createVocabulary(){
 			}
 			
 		}
+		*/
 		return result;
 	};
 
@@ -97,6 +100,26 @@ function createVocabulary(){
 	while(items.hasNext()){
 		var item = items.next();
 		var n = item.value.ids.length;
+		var ids_duplic = item.value.ids;
+		var ids = [];
+		//remove duplicates
+		for (i in ids_duplic){
+			if(i > 0){
+				var ok = true;
+				for (j in ids){
+					if (ids[j].docID.toString() == ids_duplic[i].docID.toString()){
+						ok = false;
+					}
+				}
+				if(ok){
+					ids.push(ids_duplic[i]);
+				}
+			}
+			else{
+				ids.push(ids_duplic[i]);
+			}
+			
+		}
 		var widf = Math.round(Math.log(noDocs/n) * 100)/100;
 		doc = {word: item._id, idf: widf, createdAt: new Date(), docIDs: item.value.ids};
 		db.vocabulary.insert(doc);

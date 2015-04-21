@@ -64,6 +64,17 @@ class Words(Document):
 	createdAt = DateTimeField(default=datetime.now)
 	words = ListField(EmbeddedDocumentField("Word"))
 
+	meta = {
+		'ordering': ['+createdAt'],
+		'indexes': [
+			{
+				'fields': ['+createdAt'],
+				'unique': True,
+				'sparse': False
+			}
+		]
+	}
+
 class Word(EmbeddedDocument):
 	_auto_id_field = False
 	word = StringField(max_length = 255)
