@@ -4,6 +4,8 @@ from gensim.utils import lemmatize
 from nlplib.clean_text import CleanText
 from nltk.corpus import wordnet
 from nltk.tag.stanford import POSTagger
+from pattern.fr import parse
+from nltk.corpus import stopwords
 
 #TO_DO modify this class to accept french also
 class LemmatizeText:
@@ -25,13 +27,18 @@ class LemmatizeText:
 		if self.language == 'EN':
 			self.words = lemmatize(ct.removeStopWords(self.rawText))
 			self.cleanText = ' '.join(word[:-3] for word in self.words)
-		if self.language == 'FR':
-			st = POSTagger('./nlplib/stanford_pos/french.tagger', './nlplib/stanford_pos/stanford-postagger.jar', encoding='utf-8') 
-			text = self.rawText.encode("utf8")
+		if self.language == 'FR':			
+			#st = POSTagger('./nlplib/stanford_pos/french.tagger', './nlplib/stanford_pos/stanford-postagger.jar', encoding='utf-8') 
+			text = self.rawText
 			text = text.lower()
-			text= ct.removePunctuation(ct.removeStopWords(text, self.language))
-			self.words = st.tag(text.split(" "))
-			self.cleanText = ' '.join(word[0].encode("utf8") for word in self.words)
+			text = ct.removeStopWords(text, self.language)
+			text= ct.removePunctuation(text)	
+			text = parse(text, tags = False, chunks = False, lemmata=True).split()
+			for word in text[0]:
+				#if word[2] 	not in stopwords.words("french"):
+				if word[1][:2] in ['RB', 'NN', 'VB', 'JJ']:
+					self.words.append((word[2], word[1][:2]))
+			self.cleanText = ' '.join(word[0] for word in self.words)
 
 
 	def createLemmas(self):
@@ -41,7 +48,7 @@ class LemmatizeText:
 					self.append(word[:-3], word[-2:])
 			elif self.language == 'FR':
 				for word in self.words:
-					self.append(word[0].encode("utf8"), word[1].encode("ascii"))
+					self.append(word[0], word[1])
 			#sort wordList by word count
 			self.wordList = sorted(self.wordList, key=lambda word: word.count)
 			#calculate TF

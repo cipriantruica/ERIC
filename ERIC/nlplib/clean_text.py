@@ -11,7 +11,7 @@ sys.setdefaultencoding('utf8')
 
 punctuation = '!"#$%&\'()*+,./:;<=>?@[\\]^_`{|}~'
 cachedStopWords_en = stopwords.words("english")
-cachedStopWords_fr = stopwords.words("french")
+cachedStopWords_fr = stopwords.words("french") + ["ce", "cet", "cette", "le", "les"]
 contractions_en = static.contractionsEN()
 contractions_fr = static.contractionsFR()
 contractions_re_en = re.compile('(%s)' % '|'.join(contractions_en.keys()))
@@ -69,6 +69,7 @@ class CleanText:
 			return ' '.join([word for word in text.split() if word not in cachedStopWords_en]).encode("utf8")
 		elif language == 'FR':			
 			return ' '.join([word for word in text.split() if word not in cachedStopWords_fr]).encode("utf8")
+
 
 	#split string by character
 	def splitString(self, str, ch = ',', rch = ''):
