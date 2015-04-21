@@ -1,0 +1,110 @@
+100 documents
+no docs = 93
+
+db.documents.stats()
+{
+	"ns" : "ERICDB.documents",
+	"count" : 93,
+	"size" : 1481264,
+	"avgObjSize" : 15927,
+	"numExtents" : 4,
+	"storageSize" : 2760704,
+	"lastExtentSize" : 2097152,
+	"paddingFactor" : 1,
+	"paddingFactorNote" : "paddingFactor is unused and unmaintained in 3.0. It remains hard coded to 1.0 for compatibility only.",
+	"userFlags" : 1,
+	"capped" : false,
+	"nindexes" : 3,
+	"totalIndexSize" : 24528,
+	"indexSizes" : {
+		"_id_" : 8176,
+		"createdAt_1" : 8176,
+		"title_1" : 8176
+	},
+	"ok" : 1
+}
+
+db.words.stats()
+{
+	"ns" : "ERICDB.words",
+	"count" : 93,
+	"size" : 1987120,
+	"avgObjSize" : 21366,
+	"numExtents" : 3,
+	"storageSize" : 2629632,
+	"lastExtentSize" : 2097152,
+	"paddingFactor" : 1,
+	"paddingFactorNote" : "paddingFactor is unused and unmaintained in 3.0. It remains hard coded to 1.0 for compatibility only.",
+	"userFlags" : 1,
+	"capped" : false,
+	"nindexes" : 1,
+	"totalIndexSize" : 8176,
+	"indexSizes" : {
+		"_id_" : 8176
+	},
+	"ok" : 1
+}
+
+db.pos_index.stats()
+{
+	"ns" : "ERICDB.pos_index",
+	"count" : 6838,
+	"size" : 765856,
+	"avgObjSize" : 112,
+	"numExtents" : 5,
+	"storageSize" : 2793472,
+	"lastExtentSize" : 2097152,
+	"paddingFactor" : 1,
+	"paddingFactorNote" : "paddingFactor is unused and unmaintained in 3.0. It remains hard coded to 1.0 for compatibility only.",
+	"userFlags" : 1,
+	"capped" : false,
+	"nindexes" : 1,
+	"totalIndexSize" : 228928,
+	"indexSizes" : {
+		"_id_" : 228928
+	},
+	"ok" : 1
+}
+
+db.inverted_index.stats()
+{
+	"ns" : "ERICDB.inverted_index",
+	"count" : 6838,
+	"size" : 1084448,
+	"avgObjSize" : 158,
+	"numExtents" : 5,
+	"storageSize" : 2793472,
+	"lastExtentSize" : 2097152,
+	"paddingFactor" : 1,
+	"paddingFactorNote" : "paddingFactor is unused and unmaintained in 3.0. It remains hard coded to 1.0 for compatibility only.",
+	"userFlags" : 1,
+	"capped" : false,
+	"nindexes" : 1,
+	"totalIndexSize" : 228928,
+	"indexSizes" : {
+		"_id_" : 228928
+	},
+	"ok" : 1
+}
+
+db.vocabulary.stats()
+{
+	"ns" : "ERICDB.vocabulary",
+	"count" : 6838,
+	"size" : 2535072,
+	"avgObjSize" : 370,
+	"numExtents" : 5,
+	"storageSize" : 2793472,
+	"lastExtentSize" : 2097152,
+	"paddingFactor" : 1,
+	"paddingFactorNote" : "paddingFactor is unused and unmaintained in 3.0. It remains hard coded to 1.0 for compatibility only.",
+	"userFlags" : 1,
+	"capped" : false,
+	"nindexes" : 1,
+	"totalIndexSize" : 228928,
+	"indexSizes" : {
+		"_id_" : 228928
+	},
+	"ok" : 1
+}
+

@@ -1,0 +1,58 @@
+time populate db: 3.14467811584
+time clean text: 108.487734079
+time populate db: 2.84328794479
+time clean text: 108.169378996
+time populate db: 2.92466807365
+time clean text: 108.178593874
+time populate db: 2.83253884315
+time clean text: 107.301041126
+time populate db: 2.9175889492
+time clean text: 108.230826855
+time populate db: 2.81925702095
+time clean text: 109.216489077
+time populate db: 2.83896398544
+time clean text: 108.732440948
+time populate db: 2.97139000893
+time clean text: 108.025177956
+time populate db: 3.27277803421
+time clean text: 108.01680398
+time populate db: 2.86161780357
+time clean text: 107.649008989
+time populate db: 2.88968396187
+time clean text: 109.490890026
+time populate db: 2.79911589622
+time clean text: 109.142488956
+time populate db: 2.88572406769
+time clean text: 108.499628067
+time populate db: 3.03389215469
+time clean text: 108.632333994
+time populate db: 2.95903706551
+time clean text: 110.114256144
+time populate db: 2.86872577667
+time clean text: 108.834802151
+time populate db: 2.84392118454
+time clean text: 110.26275301
+time populate db: 2.83626890182
+time clean text: 111.132073879
+time populate db: 2.85274291039
+time clean text: 108.889228106
+time populate db: 2.82759404182
+time clean text: 108.038095951
+time populate db: 3.38910293579
+time clean text: 120.677349091
+*******************
+time populate db: 2.74724411964
+time clean text: 88.5457549095
+date for update indexes: 2015-04-15 23:01:05.176000
+last date doc: 2015-04-15 23:00:39.250000
+*******************
+time populate db: 2.5914208889
+time clean text: 85.4386019707
+date for update indexes: 2015-04-16 00:37:04.083000
+last date doc: 2015-04-16 00:36:38.711000
+*******************
+time populate db: 3.01407694817
+time clean text: 112.619119883
+date for update indexes: None
+last date doc: None
+*******************

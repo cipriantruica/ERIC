@@ -1,0 +1,21 @@
+100
+pos: 5.24
+iv: 5.77
+vocabulary: 8.23
+
+500
+pos: 13.85
+iv: 15.65
+vocabulary: 48.25
+
+1000
+pos: 22.01
+iv: 25.39
+vocabulary: 130.99
+
+5000
+pos: 62.54
+iv: 87.42
+vocabulary: 1934.9
+
+10000

@@ -1,0 +1,51 @@
+100
+vocabulary	19596	=round(5776/1024, 2)
+posindex	20104	=round(3128/1024, 2)
+pos_words	8073	=round(1080/1024, 2)
+documents	93	=round(864/1024, 2)
+words	6839	=round(760/1024, 2)
+documents_tags	93	=round(40/1024, 2)
+pos	4	=round(32/1024, 2)
+tags	7	=round(32/1024, 2)
+authors 0	=round(24/1024, 2)
+authors_documents	0	=round(16/1024, 2)
+
+500
+
+vocabulary	82115	23
+posindex	84209	12
+documents	403	=round(3136/1024, 2)
+pos_words	18322	=round(2328/1024, 2)
+words	14903	=round(1576/1024, 2)
+documents_tags	403	=round(72/1024, 2)
+tags	17	=round(32/1024, 2)
+pos	4	=round(32/1024, 2)
+authors	0	=round(24/1024, 2)
+authors_documents	0	=round(16/1024, 2)
+
+
+1000
+
+vocabulary	163158	45
+posindex	167341	25
+documents	761	=round(6088/1024, 2)
+pos_words	26551	=round(3328/1024, 2)
+words	21167	=round(2112/1024, 2)
+documents_tags	761	=round(128/1024, 2)
+tags	17	=round(32/1024, 2)
+pos	4	=round(32/1024, 2)
+authors	0	=round(24/1024, 2)
+authors_documents	0	=round(16/1024, 2)
+
+5000
+
+vocabulary	754243	209
+posindex	773451	115
+documents	3497	27
+pos_words	57384	=round(7128/1024, 2)
+words	43554	4352/1024, 2)
+documents_tags	3497	=round(352/1024, 2)
+tags	17	=round(32/1024, 2)
+pos	4	=round(32/1024, 2)
+authors	0	=round(24/1024, 2)
+authors_documents	0	=round(16/1024, 2)

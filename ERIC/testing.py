@@ -114,8 +114,8 @@ def buildNamedEntities():
 
 def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', language='EN'):
 	connectDB(dbname)
-	#Documents.drop_collection()
-	#Words.drop_collection()
+	Documents.drop_collection()
+	Words.drop_collection()
 	last_docDate, last_wordDate = getDates()
 	populateDB(filename, csv_delimiter, header, language)
 	Documents.objects(intText__exists = False).delete()	

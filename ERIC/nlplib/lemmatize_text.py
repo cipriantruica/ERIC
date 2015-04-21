@@ -5,9 +5,6 @@ from nlplib.clean_text import CleanText
 from nltk.corpus import wordnet
 from nltk.tag.stanford import POSTagger
 
-
-
-
 #TO_DO modify this class to accept french also
 class LemmatizeText:
 	class Word():
