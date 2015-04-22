@@ -1,16 +1,7 @@
-pos={
-101.68
-,
-95.778
-,
-95.693
-,
-}
-iv={
-169.578
-,
-166.38
-,
-168.469
-,
-}
+pos=[ 101.68, 95.778, 95.693]
+iv=[ 169.578, 166.38, 168.469]
+vocab=[ 6781.875, 6780.953, 6777.955, 6787.018]
+
+print "pos:", round(sum(pos)/len(pos),2)
+print "iv:", round(sum(iv)/len(iv),2)
+print "vocabulary:", round(sum(vocab)/len(vocab),2)

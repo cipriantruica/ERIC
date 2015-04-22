@@ -58,7 +58,7 @@ def clean(language, last_docDate):
 		
 	start = time.time() 
 	
-	"""
+	
 	#method 1
 	pool = ThreadPool(no_threads)
 	for idx in xrange(0, len(list_of_dates)-1, 1) :
@@ -67,7 +67,7 @@ def clean(language, last_docDate):
 		pool.apply_async(func = createCleanTextField, args=(list_of_dates[idx], list_of_dates[idx+1], idx+1,  ))
 	pool.close()
 	pool.join()
-	"""
+	
 	
 	
 	#method 2
@@ -80,7 +80,7 @@ def clean(language, last_docDate):
 	print "time clean text:", (end - start)
 	"""
 	#TO_DO this is just a test, remove this line
-	createCleanTextField(list_of_dates[0], list_of_dates[1], language)
+	#createCleanTextField(list_of_dates[0], list_of_dates[1], language)
 	#createCleanTextField(list_of_dates[1], list_of_dates[2], language)
 
 	#delete documents without cleanText

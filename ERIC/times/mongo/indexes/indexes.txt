@@ -19,3 +19,6 @@ iv: 87.42
 vocabulary: 1934.9
 
 10000
+pos: 97.72
+iv: 168.14
+vocabulary: 6781.95
