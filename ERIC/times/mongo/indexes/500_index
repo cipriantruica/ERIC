@@ -1,0 +1,6 @@
+pos=[13.056, 12.587, 12.806, 12.156, 12.541]
+iv=[18.037, 15.248, 16.214, 15.422, 15.843]
+vocab=[18.781, 19.53, 19.21, 19.24, 19.564]
+print "pos:", round(sum(pos)/len(pos),2)
+print "iv:", round(sum(iv)/len(iv),2)
+print "vocabulary:", round(sum(vocab)/len(vocab),2)

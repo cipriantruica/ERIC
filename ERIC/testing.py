@@ -36,7 +36,7 @@ def populateDB(filename, csv_delimiter, header, language):
 	for line in lines:
 		populateDatabase(line, language)
 	end = time.time() 
-	print "time populate db:", (end - start)
+	print "time_populate.append(", (end - start), ")"
 
 def clean(language, last_docDate):
 	if not last_docDate:
@@ -69,17 +69,17 @@ def clean(language, last_docDate):
 	pool.close()
 	pool.join()
 	"""	
-	"""
+
 	#method 2	
 	with ThreadPoolExecutor(max_workers = no_threads) as e:
 		for idx in xrange(0, len(list_of_dates)-1, 1) :
 			 e.submit(createCleanTextField, list_of_dates[idx], list_of_dates[idx+1], language)
 	
 	end = time.time() 
-	print "time clean text:", (end - start)
-	"""
+	print "time_cleantext.append(", (end - start), ")"
+
 	#TO_DO this is just a test, remove this line
-	createCleanTextField(list_of_dates[0], list_of_dates[1], language)
+	#createCleanTextField(list_of_dates[0], list_of_dates[1], language)
 	#createCleanTextField(list_of_dates[1], list_of_dates[2], language)
 
 	#delete documents without cleanText
