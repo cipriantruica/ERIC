@@ -4,9 +4,8 @@ function createPOSIndex(){
 	
 	mapFunction = function() {
 		for (var idx=0; idx<this.words.length; idx++){
-			var pos = []
 			var key = this.words[idx].word;
-			pos.push(this.words[idx].wtype);
+			pos = this.words[idx].wtype;
 			var value = { "pos": pos};
 			emit(key, value);
 		}
@@ -21,7 +20,6 @@ function createPOSIndex(){
 		return result;
 	};
 
-	//var time = db.documents.mapReduce( mapFunction, reduceFunction, { out: "temp_collection" });
 	var time = db.words.mapReduce( mapFunction, reduceFunction, { out: "temp_collection" });
 
 	var start = new Date();

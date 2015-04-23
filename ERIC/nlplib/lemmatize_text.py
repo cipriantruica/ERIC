@@ -11,7 +11,7 @@ from nltk.corpus import stopwords
 class LemmatizeText:
 	class Word():
 		word = ""
-		wtype = ""
+		wtype = []
 		count = 0
 		tf = 0.0
 
@@ -25,8 +25,11 @@ class LemmatizeText:
 	def createLemmaText(self):
 		ct = CleanText()
 		if self.language == 'EN':
-			self.words = lemmatize(ct.removeStopWords(self.rawText))
-			self.cleanText = ' '.join(word[:-3] for word in self.words)
+			lemmas = lemmatize(ct.removeStopWords(self.rawText))
+			for word in lemmas:
+				elems = word.split('/')
+				self.words.append((elems[0], elems[1]))
+			self.cleanText = ' '.join(word[0] for word in self.words)
 		if self.language == 'FR':			
 			#st = POSTagger('./nlplib/stanford_pos/french.tagger', './nlplib/stanford_pos/stanford-postagger.jar', encoding='utf-8') 
 			text = self.rawText
@@ -43,12 +46,8 @@ class LemmatizeText:
 
 	def createLemmas(self):
 		if self.cleanText:
-			if self.language == 'EN':
-				for word in self.words:
-					self.append(word[:-3], word[-2:])
-			elif self.language == 'FR':
-				for word in self.words:
-					self.append(word[0], word[1])
+			for word in self.words:
+				self.append(word[0], word[1])
 			#sort wordList by word count
 			self.wordList = sorted(self.wordList, key=lambda word: word.count)
 			#calculate TF
@@ -62,20 +61,25 @@ class LemmatizeText:
 				newWord = self.Word()
 				newWord.count = 1
 				newWord.word = word
-				newWord.wtype = wtype
+				newWord.wtype = []
+				newWord.wtype.append(wtype)
 				self.wordList.append(newWord)
 			else:
 				notInList = True
 				for idx in xrange(0,len(self.wordList), 1):
-					if word == self.wordList[idx].word and wtype == self.wordList[idx].wtype:
+					if word == self.wordList[idx].word:
+						if wtype not in self.wordList[idx].wtype:
+							self.wordList[idx].wtype.append(wtype)
 						self.wordList[idx].count += 1
 						notInList = False
 						break
+
 				if notInList:
 					newWord = self.Word()
 					newWord.count = 1
 					newWord.word = word
-					newWord.wtype = wtype
+					newWord.wtype = []
+					newWord.wtype.append(wtype)
 					self.wordList.append(newWord)
 	#testing
 	def printList(self):

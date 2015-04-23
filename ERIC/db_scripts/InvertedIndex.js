@@ -4,7 +4,8 @@ function createInvertedIndex(){
 	
 	mapFunction = function() {
 		var ids = [];
-		ids.push(this.docID.valueOf())
+		//ids.push(this.docID.valueOf())
+		ids.push(this.docID)
 		for (var i in this.words){
 			var key = this.words[i].word;
 			var value = { "ids": ids};
@@ -15,9 +16,12 @@ function createInvertedIndex(){
 	reduceFunction = function(key, values) {
 		var result = {"ids": []};
 		values.forEach(function (v) {
+			/*
 			result.ids = v.ids.concat(result.ids.filter(function (item) {
 								return v.ids.indexOf(item) < 0;
 								}));
+			*/
+			result.ids = v.ids.concat(result.ids)
 		});
 
 		return result
@@ -31,11 +35,13 @@ function createInvertedIndex(){
 	var items = db.inverted_index2.find().addOption(DBQuery.Option.noTimeout);
 	while(items.hasNext()){
 		var item = items.next();
+		/*
 		var dids = []
 		for (var i in item.value.ids){
 			dids.push(new ObjectId(item.value.ids[i]));
 		}
-		doc = {word: item._id, createdAt: new Date(), docIDs: dids};
+		*/
+		doc = {word: item._id, createdAt: new Date(), docIDs: item.value.ids};
 		db.inverted_index.insert(doc);
 	}
 	var end = new Date();

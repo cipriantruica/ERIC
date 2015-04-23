@@ -1,6 +1,3 @@
-100 documents
-no docs = 93
-
 db.documents.stats()
 {
 	"ns" : "ERICDB.documents",
@@ -23,13 +20,12 @@ db.documents.stats()
 	},
 	"ok" : 1
 }
-
-db.words.stats()
+> db.words.stats()
 {
 	"ns" : "ERICDB.words",
 	"count" : 93,
-	"size" : 1987120,
-	"avgObjSize" : 21366,
+	"size" : 2130480,
+	"avgObjSize" : 22908,
 	"numExtents" : 3,
 	"storageSize" : 2629632,
 	"lastExtentSize" : 2097152,
@@ -44,8 +40,7 @@ db.words.stats()
 	},
 	"ok" : 1
 }
-
-db.pos_index.stats()
+> db.pos_index.stats()
 {
 	"ns" : "ERICDB.pos_index",
 	"count" : 6838,
@@ -65,8 +60,7 @@ db.pos_index.stats()
 	},
 	"ok" : 1
 }
-
-db.inverted_index.stats()
+> db.inverted_index.stats()
 {
 	"ns" : "ERICDB.inverted_index",
 	"count" : 6838,
@@ -86,8 +80,7 @@ db.inverted_index.stats()
 	},
 	"ok" : 1
 }
-
-db.vocabulary.stats()
+> db.vocabulary.stats()
 {
 	"ns" : "ERICDB.vocabulary",
 	"count" : 6838,
@@ -106,5 +99,3 @@ db.vocabulary.stats()
 		"_id_" : 228928
 	},
 	"ok" : 1
-}
-

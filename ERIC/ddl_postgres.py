@@ -82,24 +82,24 @@ def createCleanTextField(startDate, endDate, language):
 				document.cleanText = lemmas.cleanText.decode("utf8")
 				commit()
 				lemmas.createLemmas()				
-				for word in lemmas.wordList:
-					#original
-					p = POS.get_for_update(pos=word.wtype)
-					if not p:
-						p = POS(pos=word.wtype)	
-						commit()			
+				for word in lemmas.wordList:								
 					w = Words.get_for_update(word=word.word.decode("utf8"))
 					if not w:
 						w = Words(word=word.word.decode("utf8"))
 						commit()
-					pw = Pos_Words.get_for_update(posID = p, wordID = w)
-					if not pw:
-						pw = Pos_Words(posID = p, wordID = w)
-						commit()
-					pi = POSIndex.get_for_update(posID = p, wordID = w, documentID=document)
-					if not pi:
-						pi = POSIndex(posID = p, wordID = w, documentID=document)
-						commit()
+					for wtype in word.wtype:
+						p = POS.get_for_update(pos=wtype)
+						if not p:
+							p = POS(pos=wtype)	
+							commit()
+						pw = Pos_Words.get_for_update(posID = p, wordID = w)
+						if not pw:
+							pw = Pos_Words(posID = p, wordID = w)
+							commit()
+						pi = POSIndex.get_for_update(posID = p, wordID = w, documentID=document)
+						if not pi:
+							pi = POSIndex(posID = p, wordID = w, documentID=document)
+							commit()
 					v = Vocabulary.get_for_update(documentID=document, wordID=w, count=round(word.count,2), tf=round(word.tf,2))
 					if not v:
 						v = Vocabulary(documentID=document, wordID=w, count=round(word.count,2), tf=round(word.tf,2))

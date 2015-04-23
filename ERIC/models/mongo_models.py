@@ -65,26 +65,24 @@ class Words(Document):
 	words = ListField(EmbeddedDocumentField("Word"))
 
 	meta = {
-		'ordering': ['+createdAt'],
-		'indexes': [
-			{
-				'fields': ['+createdAt'],
-				'unique': True,
-				'sparse': False
-			}
-		]
+		'ordering': ['+createdAt']		
 	}
 
 class Word(EmbeddedDocument):
 	_auto_id_field = False
 	word = StringField(max_length = 255)
-	wtype = StringField(max_length = 255)
+	wtype = ListField()
 	count = FloatField()
 	tf = FloatField()
 	idf = FloatField()
 
 	meta = {
-		'ordering': ['-word']
+		'ordering': ['-word'],
+		'indexes': [		
+			{
+				'fields': ['words.word']
+			}
+		]
 	}
 
 class InvertedIndex(Document):
