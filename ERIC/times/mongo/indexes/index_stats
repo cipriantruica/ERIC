@@ -9,7 +9,16 @@ iv: 16.15
 vocabulary: 19.26
 
 1000
+pos: 20.1
+iv: 25.36
+vocabulary: 32.95
+
 5000
+pos: 57.74
+iv: 81.46
+vocabulary: 117.15
+
+
 10000
 50000
 100000

@@ -1,20 +1,32 @@
 stats
 100
-documents	93	round(1481264/1024/1024, 2)
-words	93	round(2130480/1024/1024, 2)
-pos_index	6838	round(765856/1024/1024, 2)
-inverted_index	6838	round(1084448/1024/1024, 2)
-vocabulary	6838	round(2535072/1024/1024, 2)
+documents	93	=round(1481264/1024/1024, 2)
+words	93	=round(2130480/1024/1024, 2)
+pos_index	6838	=round(765856/1024/1024, 2)
+inverted_index	6838	=round(1084448/1024/1024, 2)
+vocabulary	6838	=round(2535072/1024/1024, 2)
 
 500
-documents	403	round(6018768/1024/1024, 2)
-words	403	round(8890576/1024/1024, 2)
-pos_index	14932	round(1672384/1024/1024, 2)
-inverted_index	14932	round(3263552/1024/1024, 2)
-vocabulary	14932	round(8526528/1024/1024, 2)
+documents	403	=round(6018768/1024/1024, 2)
+words	403	=round(8890576/1024/1024, 2)
+pos_index	14932	=round(1672384/1024/1024, 2)
+inverted_index	14932	=round(3263552/1024/1024, 2)
+vocabulary	14932	=round(8526528/1024/1024, 2)
 
 1000
+documents	761	=round(11966576/1024/1024, 2)
+words	761	=round(17760880/1024/1024, 2)
+pos_index	21189	=round(2373296/1024/1024, 2)
+inverted_index	21189	=round(5692720/1024/1024, 2)
+vocabulary	21189	=round(15736240/1024/1024, 2)
+
 5000
+documents	3479	=round(55543952/1024/1024, 2)
+words	3479	=round(81590416/1024/1024, 2)
+pos_index	43581	=round(4882096/1024/1024, 2)
+inverted_index	43581	=round(21586736/1024/1024, 2)
+vocabulary	43581	=round(64738096/1024/1024, 2)
+
 10000
 50000
 100000
