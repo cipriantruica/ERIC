@@ -1,0 +1,105 @@
+> db.documents.stats()
+{
+	"ns" : "ERICDB.documents",
+	"count" : 106004,
+	"size" : 208701888,
+	"avgObjSize" : 1968,
+	"numExtents" : 12,
+	"storageSize" : 240832512,
+	"lastExtentSize" : 68579328,
+	"paddingFactor" : 1,
+	"paddingFactorNote" : "paddingFactor is unused and unmaintained in 3.0. It remains hard coded to 1.0 for compatibility only.",
+	"userFlags" : 1,
+	"capped" : false,
+	"nindexes" : 3,
+	"totalIndexSize" : 13809264,
+	"indexSizes" : {
+		"_id_" : 3458448,
+		"createdAt_1" : 2992416,
+		"title_1" : 7358400
+	},
+	"ok" : 1
+}
+> db.words.stats()
+{
+	"ns" : "ERICDB.words",
+	"count" : 106004,
+	"size" : 347676864,
+	"avgObjSize" : 3279,
+	"numExtents" : 12,
+	"storageSize" : 399294464,
+	"lastExtentSize" : 134217728,
+	"paddingFactor" : 1,
+	"paddingFactorNote" : "paddingFactor is unused and unmaintained in 3.0. It remains hard coded to 1.0 for compatibility only.",
+	"userFlags" : 1,
+	"capped" : false,
+	"nindexes" : 4,
+	"totalIndexSize" : 84122864,
+	"indexSizes" : {
+		"_id_" : 3507504,
+		"words.word_1" : 74826752,
+		"docID_1" : 3115056,
+		"createdAt_1" : 2673552
+	},
+	"ok" : 1
+}
+> db.pos_index.stats()
+{
+	"ns" : "ERICDB.pos_index",
+	"count" : 93926,
+	"size" : 10522912,
+	"avgObjSize" : 112,
+	"numExtents" : 7,
+	"storageSize" : 22507520,
+	"lastExtentSize" : 11325440,
+	"paddingFactor" : 1,
+	"paddingFactorNote" : "paddingFactor is unused and unmaintained in 3.0. It remains hard coded to 1.0 for compatibility only.",
+	"userFlags" : 1,
+	"capped" : false,
+	"nindexes" : 1,
+	"totalIndexSize" : 3066000,
+	"indexSizes" : {
+		"_id_" : 3066000
+	},
+	"ok" : 1
+}
+> db.inverted_index.stats()
+{
+	"ns" : "ERICDB.inverted_index",
+	"count" : 93926,
+	"size" : 84681888,
+	"avgObjSize" : 901,
+	"numExtents" : 11,
+	"storageSize" : 122593280,
+	"lastExtentSize" : 37625856,
+	"paddingFactor" : 1,
+	"paddingFactorNote" : "paddingFactor is unused and unmaintained in 3.0. It remains hard coded to 1.0 for compatibility only.",
+	"userFlags" : 1,
+	"capped" : false,
+	"nindexes" : 1,
+	"totalIndexSize" : 3066000,
+	"indexSizes" : {
+		"_id_" : 3066000
+	},
+	"ok" : 1
+}
+> db.vocabulary.stats()
+{
+	"ns" : "ERICDB.vocabulary",
+	"count" : 93926,
+	"size" : 263637408,
+	"avgObjSize" : 2806,
+	"numExtents" : 15,
+	"storageSize" : 344186880,
+	"lastExtentSize" : 92585984,
+	"paddingFactor" : 1,
+	"paddingFactorNote" : "paddingFactor is unused and unmaintained in 3.0. It remains hard coded to 1.0 for compatibility only.",
+	"userFlags" : 1,
+	"capped" : false,
+	"nindexes" : 1,
+	"totalIndexSize" : 3066000,
+	"indexSizes" : {
+		"_id_" : 3066000
+	},
+	"ok" : 1
+}
