@@ -1,0 +1,15 @@
+time_populate = []
+time_clean = []
+
+time_populate.append(7.7615840435)
+time_clean.append(2495.83533788)
+time_populate.append(7.82310295105)
+time_clean.append(2476.44006085)
+time_populate.append(7.85511207581)
+time_clean.append(2498.79064894)
+
+populate_mean = round(sum(time_populate)/len(time_populate), 2)
+clean_mean = round(sum(time_clean)/len(time_clean), 2)
+
+print populate_mean
+print clean_mean
