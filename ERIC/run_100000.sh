@@ -27,7 +27,7 @@ for i in `seq 1 $N`
 do
 	echo "test_$i"
 	START=$(getCurrentTimeInMili)
-	python testing.py $FILE $DELIMITER $HEADER $DB $LANGUAGE >> $path"100000_perforance"
+	python testing_mongo.py $FILE $DELIMITER $HEADER $DB $LANGUAGE >> $path"100000_perforance"
 	END=$(getCurrentTimeInMili)
 	DIFF=$(( $END - $START ))
 	echo "********************************" >> $path"100000_perforance"
