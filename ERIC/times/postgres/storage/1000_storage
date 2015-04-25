@@ -1,0 +1,10 @@
+"vocabulary";159030;44
+"posindex";167341;25
+"documents";763;=round(6096/1024, 2)
+"pos_words";26552;=round(3320/1024, 2)
+"words";21167;=round(2112/1024, 2)
+"documents_tags";763;=round(128/1024, 2)
+"tags";17;=round(32/1024, 2)
+"pos";4;=round(32/1024, 2)
+"authors";0;=round(24/1024, 2)
+"authors_documents";0;=round(16/1024, 2)
