@@ -36,7 +36,10 @@ def populateDatabase(elem, language='EN'):
 		intText = cleanText.cleanText(elem[1], language)
 		
 		if language == 'EN':
-			date = datetime.strptime(elem[2][:-6], "%a, %d %b %Y %H:%M:%S")
+			if elem[2][3] == ',':
+				date = datetime.strptime(elem[2][:-6], "%a, %d %b %Y %H:%M:%S")
+			else:
+				date = datetime.strptime(elem[2], "%Y/%m/%d")
 		else:			
 			date = datetime.strptime(elem[2], "%d/%m/%Y")
 		
