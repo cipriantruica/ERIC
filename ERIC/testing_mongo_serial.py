@@ -54,9 +54,9 @@ def clean(language, last_docDate):
 	#add one second to the last date
 	list_of_dates[-1] += timedelta(0,1)
 	
-	
+	start = time.time() 
 	for idx in xrange(0, len(list_of_dates)-1, 1) :
-		e.submit(createCleanTextField, list_of_dates[idx], list_of_dates[idx+1], language)
+		createCleanTextField(list_of_dates[idx], list_of_dates[idx+1], language)
 	
 	end = time.time() 
 	print "time_cleantext.append(", (end - start), ")"

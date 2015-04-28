@@ -7,7 +7,7 @@ from datetime import timedelta
 from multiprocessing.pool import ThreadPool
 from multiprocessing import cpu_count
 from concurrent.futures import ThreadPoolExecutor
-from dll_mongo import *
+from ddl_mongo import *
 from models.mongo_models import *
 
 #this script receives 5 parameters

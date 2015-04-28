@@ -43,20 +43,22 @@ def executeQuery(searchPhrase, k):
 			print "Error execute query\n", e
 	
 		rows = cur.fetchall()
-		print "\nRows: \n"
-		for row in rows:
-			print "   ", row
+		#print "\nRows: \n"
+		#for row in rows:
+		#	print "   ", row
 	except Exception as e:
 		print "I am unable to connect to the database.\n", e
 
-	
-	
-	
-	
 
-searchPhrase = """absurd ability action back go"""
-start = time.time() 
-executeQuery(searchPhrase, "20")
-end = time.time() 
-print (end-start)
+if __name__ == "__main__":
+	#searchPhrase = "absurd"
+	#searchPhrase = "absurd ability"
+	#searchPhrase = "absurd ability action"
+	#searchPhrase = "absurd ability action back"
+	searchPhrase = "absurd ability action back go"
+	
+	start = time.time()
+	search = executeQuery(searchPhrase, "20")
+	end = time.time() 
+	print 'time_5_words.append(', (end-start), ')'
 

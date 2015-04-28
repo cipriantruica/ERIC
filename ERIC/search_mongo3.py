@@ -102,10 +102,10 @@ class Search:
 
 		#print answer.values()
 		answer = sorted(answer.items(), key=lambda x: x[1], reverse=True)
-
+		
 		idx = 0
 		for key in answer:
-			print key
+			#print key
 			idx += 1
 			if idx == k:
 				break
@@ -113,10 +113,18 @@ class Search:
 
 
 if __name__ == "__main__":
-	#searchPhrase = sys.argv[1]
-	db.search_index.drop();
-	searchPhrase = "absurd ability action back go"
-	start = time.time() 
-	search = Search(searchPhrase, 20)
-	end = time.time() 
-	print (end -start)
+	db.search_index.drop()
+	searchPhrase = []
+	searchPhrase.append("absurd")
+	searchPhrase.append("absurd ability")
+	searchPhrase.append("absurd ability action")
+	searchPhrase.append("absurd ability action back")
+	searchPhrase.append("absurd ability action back go")
+	for i in range(0,5):
+		time_words = []
+		for j in range(0, 5):
+			start = time.time()
+			search = Search(searchPhrase[i], 20)
+			end = time.time() 
+			time_words.append(end-start)
+		print "no search words:", i+1, " k = ", 20, 'mean time:', round(sum(time_words)/len(time_words), 2)
