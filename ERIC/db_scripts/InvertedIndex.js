@@ -16,15 +16,9 @@ function createInvertedIndex(){
 	reduceFunction = function(key, values) {
 		var result = {"ids": []};
 		values.forEach(function (v) {
-			/*
-			result.ids = v.ids.concat(result.ids.filter(function (item) {
-								return v.ids.indexOf(item) < 0;
-								}));
-			*/
 			result.ids = v.ids.concat(result.ids)
 		});
-
-		return result
+		return result;
 	};
 
 	//var time = db.documents.mapReduce( mapFunction, reduceFunction, { out: "inverted_index2" });

@@ -7,7 +7,7 @@ from datetime import timedelta
 from multiprocessing.pool import ThreadPool
 from multiprocessing import cpu_count
 from concurrent.futures import ThreadPoolExecutor
-from data_layer_logic import *
+from dll_mongo import *
 from models.mongo_models import *
 
 #this script receives 5 parameters
@@ -73,7 +73,7 @@ def clean(language, last_docDate):
 	#method 2	
 	with ThreadPoolExecutor(max_workers = no_threads) as e:
 		for idx in xrange(0, len(list_of_dates)-1, 1) :
-			 e.submit(createCleanTextField, list_of_dates[idx], list_of_dates[idx+1], language)
+			e.submit(createCleanTextField, list_of_dates[idx], list_of_dates[idx+1], language)
 	
 	end = time.time() 
 	print "time_cleantext.append(", (end - start), ")"
@@ -106,7 +106,7 @@ def buildNamedEntities():
 	start = time.time()
 	with ThreadPoolExecutor(max_workers = no_threads) as e:
 		for idx in xrange(0, len(list_of_dates)-1, 1) :
-			 e.submit(createNamedEntitiesCollection, list_of_dates[idx], list_of_dates[idx+1])
+			e.submit(createNamedEntitiesCollection, list_of_dates[idx], list_of_dates[idx+1])
 	end = time.time() 
 	
 	print "time build named entities:", (end - start) 

@@ -3,7 +3,12 @@ from datetime import datetime
 from bson.objectid import ObjectId
 
 def connectDB(dbname = 'ERICDB'):
-	connect(dbname)
+	connect(dbname, host="127.0.0.1", port=27017, read_preference= True)
+
+class Author(EmbeddedDocument):
+	_auto_id_field = False
+	firstname = StringField(max_length = 255)
+	lastname = StringField(max_length = 255)
 
 class Documents(Document):
 	title = StringField(max_length = 255, required = True, unique=True)
@@ -54,20 +59,6 @@ class Documents(Document):
 	}
 	"""
 
-class Author(EmbeddedDocument):
-	_auto_id_field = False
-	firstname = StringField(max_length = 255)
-	lastname = StringField(max_length = 255)
-
-class Words(Document):
-	docID = ObjectIdField()
-	createdAt = DateTimeField(default=datetime.now)
-	words = ListField(EmbeddedDocumentField("Word"))
-
-	meta = {
-		'ordering': ['+createdAt']		
-	}
-
 class Word(EmbeddedDocument):
 	_auto_id_field = False
 	word = StringField(max_length = 255)
@@ -83,6 +74,15 @@ class Word(EmbeddedDocument):
 				'fields': ['words.word']
 			}
 		]
+	}
+
+class Words(Document):
+	docID = ObjectIdField()
+	createdAt = DateTimeField(default=datetime.now)
+	words = ListField(EmbeddedDocumentField("Word"))
+
+	meta = {
+		'ordering': ['+createdAt']		
 	}
 
 class InvertedIndex(Document):
@@ -101,6 +101,14 @@ class InvertedIndex(Document):
 #		]
 	}
 
+class Docs(EmbeddedDocument):
+	_auto_id_field = False
+	#docId = ReferenceField("Documents", dbref=False)
+	docID = ObjectIdField()
+	count = FloatField()
+	tf = FloatField()
+	wtype = StringField(max_length = 255)
+
 class Vocabulary(Document):
 	word = StringField(max_length = 255, required = True, unique=True)
 	idf = FloatField()
@@ -117,14 +125,6 @@ class Vocabulary(Document):
 				}
 		]
 	}
-
-class Docs(EmbeddedDocument):
-	_auto_id_field = False
-	#docId = ReferenceField("Documents", dbref=False)
-	docID = ObjectIdField()
-	count = FloatField()
-	tf = FloatField()
-	wtype = StringField(max_length = 255)
 
 class NamedEntities(Document):
 	docID = ObjectIdField()

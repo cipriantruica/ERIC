@@ -97,3 +97,52 @@ function testing(n){
 }
 
 testing(20)
+
+
+db.system.js.save(
+{
+	_id: "createVocabulary",
+	value: function(){
+	db.temp_collection.drop();
+	db.vocabulary.drop();
+	
+	mapFunction = function() {
+		for (var idx=0; idx<this.words.length; idx++){
+			var key = this.words[idx].word;
+			var ids = {"docID": this.docID, "count": this.words[idx].count, "tf": this.words[idx].tf};
+			var value = { "ids": [ids]};
+			emit(key, value);
+		}
+	}
+
+	reduceFunction = function(key, values) {
+		var result = {"ids": []};
+		var intermediar = {"ids": []};
+		values.forEach(function (v) {
+			result.ids = v.ids.concat(result.ids);
+		});
+		return result;
+	};
+
+	//var time = db.documents.mapReduce( mapFunction, reduceFunction, { out: "temp_collection" });
+	var time = db.words.mapReduce( mapFunction, reduceFunction, { out: "temp_collection" });
+	//print(time.timeMillis/1000.0);
+	
+	var noDocs = db.documents.count();
+
+	var start = new Date();
+	var items = db.temp_collection.find().addOption(DBQuery.Option.noTimeout);
+	while(items.hasNext()){
+		var item = items.next();
+		var n = item.value.ids.length;
+		var widf = Math.round(Math.log(noDocs/n) * 100)/100;
+		doc = {word: item._id, idf: widf, createdAt: new Date(), docIDs: item.value.ids};
+		db.vocabulary.insert(doc);
+	}
+	var end = new Date();
+	print ((end.getTime() - start.getTime() + time.timeMillis)/1000.0)
+	db.temp_collection.drop();
+}
+
+}
+)

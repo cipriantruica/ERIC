@@ -138,6 +138,8 @@ function testing(n){
 
 testing(5)
 
+db.vocabulary.ensureIndex( { "word": 1 } )
+
 db.documents.stats()
 db.words.stats()
 db.pos_index.stats()
