@@ -26,7 +26,7 @@
 * sudo apt-get install git
 * sudo apt-get install libenchant1c2a
 * sudo pip install -U numpy
-* sudo pip install pymongo
+* sudo pip install pymongo==2.8
 * sudo pip install mongoengine
 * sudo pip install -U nltk
 * python -m nltk.downloader all

@@ -45,6 +45,7 @@ function updateVocabularyUpdate(startDate){
 	var noDocs = db.documents.count();
 
 	var start = new Date();
+	/*
 	var items = db.temp_collection.find().addOption(DBQuery.Option.noTimeout);
 	while(items.hasNext()){
 		var item = items.next();
@@ -68,6 +69,25 @@ function updateVocabularyUpdate(startDate){
 			var n = dids.length;
 			var widf = Math.round(Math.log(noDocs/n) * 100)/100;
 			doc = {word: wordID, idf: widf, createdAt: new Date(), docIDs: dids};
+			db.vocabulary.insert(doc);
+		}
+	}
+	*/
+	var items = db.temp_collection.find().addOption(DBQuery.Option.noTimeout);
+	while(items.hasNext()){
+		var item = items.next();
+		var wordID = item._id;
+		var exists = db.vocabulary.findOne({word: wordID}, {docIDs: 1, _id: 0});
+		if (exists){
+			var docIDs = exists.docIDs;
+			docIDs = docIDs.concat(item.value.ids);
+			var n = docIDs.length;
+			var widf = Math.round(Math.log(noDocs/n) * 100)/100;
+			db.vocabulary.update({word: wordID}, {$set: {idf: widf, docIDs: docIDs}});
+		}else{
+			var n = item.value.ids.length;
+			var widf = Math.round(Math.log(noDocs/n) * 100)/100;
+			doc = {word: wordID, idf: widf, createdAt: new Date(), docIDs: item.value.ids};
 			db.vocabulary.insert(doc);
 		}
 	}

@@ -1,50 +1,67 @@
 import pymongo
-import time
 
 mapFunction = """function() {
-			var ids = [];
-			//ids.push(this.docID.valueOf())
-			ids.push(this.docID)
-			for (var i in this.words){
-				var key = this.words[i].word;
-				var value = { "ids": ids};
-				emit(key, value);
-			}
-		}"""
+					var ids = [];
+					ids.push(this.docID)
+					for (var i in this.words){
+						var key = this.words[i].word;
+						var value = { 'ids': ids};
+						emit(key, value);
+					}
+				}"""
 
 reduceFunction = """function(key, values) {
-			var result = {"ids": []};
-			values.forEach(function (v) {
-				result.ids = v.ids.concat(result.ids)
-			});
-			return result;
-		}"""
+					var result = {'ids': []};
+					values.forEach(function (v) {
+						result.ids = v.ids.concat(result.ids)
+					});
+					return result;
+				};"""
 
-function = """function(){
-			var items = db.inverted_index2.find().addOption(DBQuery.Option.noTimeout);
-			while(items.hasNext()){
-				var item = items.next();
-				doc = {word: item._id, createdAt: new Date(), docIDs: item.value.ids};
-				db.inverted_index.insert(doc);
-			}
-		}"""
+functionCreate = """function(){
+				var items = db.temp_collection.find().addOption(DBQuery.Option.noTimeout);
+				while(items.hasNext()){
+					var item = items.next();
+					doc = {word: item._id, createdAt: new Date(), docIDs: item.value.ids};
+					db.inverted_index.insert(doc);
+				}
+			}"""
 
-class CreateInvertedIndex:
-	def __init__(self, dbname, query=None):		
+functionUpdate = """function(){
+				var items = db.temp_collection.find().addOption(DBQuery.Option.noTimeout);
+				while(items.hasNext()){
+					var item = items.next();
+					var wordID = item._id;					
+					var exists = db.inverted_index.findOne({word: wordID}, {docIDs: 1, _id: 0});
+					if (exists){
+							var docIDs = exists.docIDs;		
+							docIDs = docIDs.concat(item.value.ids);
+							db.inverted_index.update({word: wordID}, {$set: {docIDs: docids_vec}});
+					}else{
+						doc = {word: wordID, createdAt: new Date(), docIDs: item.value.ids};
+						db.inverted_index.insert(doc);
+					}
+				}
+			}"""
+
+class InvertedIndex:
+	def __init__(self, dbname):
 		client = pymongo.MongoClient()
-		db = client[dbname]
-		db.inverted_index.drop();
+		self.db = client[dbname]
+
+
+	def createIndex(self, query=None):
+		self.db.inverted_index.drop();
 		if query:
-			db.words.map_reduce(mapFunction, reduceFunction, "inverted_index2", query = query)
+			self.db.words.map_reduce(mapFunction, reduceFunction, "temp_collection", query = query)
 		else:
-			db.words.map_reduce(mapFunction, reduceFunction, "inverted_index2")
-		db.eval(function)
-		db.inverted_index.ensure_index("word")
+			self.db.words.map_reduce(mapFunction, reduceFunction, "temp_collection")
+		self.db.eval(functionCreate)
+		self.db.inverted_index.ensure_index("word")
+		self.db.temp_collection.drop()
 
-
-"""
-start = time.time() 
-CreateInvertedIndex('ERICDB')
-end = time.time()
-print (end - start)
-"""
+	def updateIndex(self, startDate):
+		query = query = {"createdAt": {"$gt": startDate } }
+		self.db.words.map_reduce(mapFunction, reduceFunction, "temp_collection", query = query)		
+		self.db.eval(functionCreate, {'startDate': startDate})
+		self.db.temp_collection.drop()

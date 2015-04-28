@@ -9,6 +9,9 @@ from multiprocessing import cpu_count
 from concurrent.futures import ThreadPoolExecutor
 from ddl_mongo import *
 from models.mongo_models import *
+from indexing.vocabulary_index import VocabularyIndex as VI
+from indexing.inverted_index import InvertedIndex as IV
+from indexing.pos_index import POSIndex as PI
 
 #this script receives 5 parameters
 # 1 - filename
@@ -22,6 +25,7 @@ def getDates():
 	no_docs = documents.count()
 	last_docDate = None
 	last_wordDate = None
+	print no_docs
 	if no_docs > 0:
 		last_docDate = documents[no_docs-1].createdAt
 	words = Words.objects.only("createdAt")
@@ -44,6 +48,7 @@ def clean(language, last_docDate):
 	else:
 		documents = Documents.objects(Q(createdAt__gte = last_docDate)).only("createdAt")
 	no_docs = documents.count()
+	print no_docs
 	
 	list_of_dates = []
 	idx = 0
@@ -103,6 +108,15 @@ def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', langu
 	populateDB(filename, csv_delimiter, header, language)
 	Documents.objects(intText__exists = False).delete()	
 	clean(language, last_docDate)
+	"""
+	#for testing
+	iv = IV(dbname)
+	pos = PI(dbname)
+	vocab = VI(dbname)
+	pos.createIndex()
+	iv.createIndex()
+	vocab.createIndex()
+	"""
 	print 'date for update indexes:', last_wordDate
 	print 'last date doc:', last_docDate
 	#NamedEntities.drop_collection()
