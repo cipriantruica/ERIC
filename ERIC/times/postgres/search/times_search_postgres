@@ -1,0 +1,40 @@
+#no search words: 1  k =  20 
+time_1_word = []
+time_1_word.append(1.60478496552)
+time_1_word.append(2.0344209671)
+time_1_word.append(2.05033898354)
+time_1_word.append(1.63972592354)
+time_1_word.append(1.9704349041)
+round(sum(time_1_word)/len(time_1_word),2)
+
+#no search words: 2  k =  20 
+time_2_words = []
+time_2_words.append(2.07812094688)
+time_2_words.append(1.77987790108)
+time_2_words.append(1.80078601837)
+time_2_words.append(1.72439289093)
+round(sum(time_2_words)/len(time_2_words),2)
+
+#no search words: 3  k =  20 
+time_3_words = []
+time_3_words.append( 1.8583688736 )
+time_3_words.append( 2.21324300766 )
+time_3_words.append( 2.25414299965 )
+time_3_words.append( 2.202023983 )
+round(sum(time_3_words)/len(time_3_words),2)
+
+#no search words: 4  k =  20 
+time_4_words = []
+time_4_words.append( 2.33153605461 )
+time_4_words.append( 2.47740602493 )
+time_4_words.append( 2.39437818527 )
+time_4_words.append( 2.34180784225 )
+round(sum(time_4_words)/len(time_4_words),2)
+
+#no search words: 5  k =  20 
+time_5_words = []
+time_5_words.append( 2.36184191704 )
+time_5_words.append( 2.80478906631 )
+time_5_words.append( 2.75286889076 )
+time_5_words.append( 2.71458315849 )
+round(sum(time_5_words)/len(time_5_words),2)
