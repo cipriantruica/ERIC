@@ -25,7 +25,6 @@ def getDates():
 	no_docs = documents.count()
 	last_docDate = None
 	last_wordDate = None
-	print no_docs
 	if no_docs > 0:
 		last_docDate = documents[no_docs-1].createdAt
 	words = Words.objects.only("createdAt")
@@ -102,11 +101,12 @@ def buildNamedEntities():
 
 def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', language='EN'):
 	connectDB(dbname)
+	"""
 	Documents.drop_collection()
 	Words.drop_collection()
 	last_docDate, last_wordDate = getDates()
 	populateDB(filename, csv_delimiter, header, language)
-	Documents.objects(intText__exists = False).delete()	
+	Documents.objects(intText__exists = False).delete()		
 	clean(language, last_docDate)
 	"""
 	#for testing
@@ -116,9 +116,9 @@ def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', langu
 	pos.createIndex()
 	iv.createIndex()
 	vocab.createIndex()
-	"""
-	print 'date for update indexes:', last_wordDate
-	print 'last date doc:', last_docDate
+	
+	#print 'date for update indexes:', last_wordDate
+	#print 'last date doc:', last_docDate
 	#NamedEntities.drop_collection()
 	#buildNamedEntities()
 	

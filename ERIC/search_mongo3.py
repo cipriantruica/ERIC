@@ -45,6 +45,8 @@ class Search:
 		lista = {}
 		for value in response[0]['docIDs']:
 			lista[value['docID']] = value['TFIDF']
+		db.search_index2.drop()
+		db.search_index2.drop()
 		return lista
 
 	def rank(self, searchPhrase):
@@ -83,10 +85,15 @@ class Search:
 
 		keys = {}
 		rankedPhrase = {}
+		
 		with ThreadPoolExecutor(max_workers = no_threads) as e:
 			for phrase in subSearch:
 				result = e.submit(self.rank, phrase)
-				rankedPhrase[' '.join(word for word in phrase)], keys[' '.join(word for word in phrase)]= result.result()
+				rankedPhrase[' '.join(word for word in phrase)], keys[' '.join(word for word in phrase)] = result.result()
+		"""
+		for phrase in subSearch:
+			rankedPhrase[' '.join(word for word in phrase)], keys[' '.join(word for word in phrase)] = self.rank(phrase)
+		"""
 		
 		distinctKeys = []
 		for key in keys:			
