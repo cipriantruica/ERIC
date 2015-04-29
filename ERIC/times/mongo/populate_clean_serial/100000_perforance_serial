@@ -1,0 +1,9 @@
+time_populate = []
+time_cleantext = []
+time_populate.append( 396.561236858 )
+time_cleantext.append( 3540.30375504 )
+time_populate.append( 391.170699835 )
+time_cleantext.append( 3587.83352017 )
+
+round( sum(time_populate)/len(time_populate), 2)
+round( sum(time_cleantext)/len(time_cleantext), 2)
