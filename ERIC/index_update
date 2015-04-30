@@ -1,0 +1,178 @@
+no doc = 500
+Update
+time_populate.append( 5.70088195801 )
+time_cleantext.append( 9.91646313667 )
+vocabulary_update.append( 5.10452699661 )
+inverted_update.append( 2.79886317253 )
+pos_update.append( 3.23146104813 )
+Delete
+vocabulary_delete.append( 364.709884882 )
+inverted_delete.append( 145.08685112 )
+pos_delete.append( 17.4029738903 )
+*********
+no doc = 500
+Update
+time_populate.append( 1.68725395203 )
+time_cleantext.append( 9.94170618057 )
+vocabulary_update.append( 2.97882604599 )
+inverted_update.append( 2.49260997772 )
+pos_update.append( 2.36988306046 )
+Delete
+vocabulary_delete.append( 226.897402048 )
+inverted_delete.append( 111.080842972 )
+pos_delete.append( 17.751180172 )
+*********
+no doc = 500
+Update
+time_populate.append( 1.44811487198 )
+time_cleantext.append( 11.310147047 )
+vocabulary_update.append( 3.21290493011 )
+inverted_update.append( 2.56100797653 )
+pos_update.append( 2.41683983803 )
+Delete
+vocabulary_delete.append( 226.404403925 )
+inverted_delete.append( 114.411331177 )
+pos_delete.append( 17.9629559517 )
+*********
+no doc = 500
+Update
+time_populate.append( 1.4442191124 )
+time_cleantext.append( 9.97122001648 )
+vocabulary_update.append( 3.37078022957 )
+inverted_update.append( 2.52880597115 )
+pos_update.append( 2.40422511101 )
+Delete
+vocabulary_delete.append( 228.99793911 )
+inverted_delete.append( 112.741851091 )
+pos_delete.append( 18.1827259064 )
+*********
+no doc = 500
+Update
+time_populate.append( 2.38820195198 )
+time_cleantext.append( 10.2570121288 )
+vocabulary_update.append( 3.17259502411 )
+inverted_update.append( 2.56721305847 )
+pos_update.append( 2.46921896935 )
+Delete
+vocabulary_delete.append( 229.336081028 )
+inverted_delete.append( 114.214479208 )
+pos_delete.append( 18.3094007969 )
+*********
+no doc = 1000
+Update
+time_populate.append( 3.10690689087 )
+time_cleantext.append( 19.7615721226 )
+vocabulary_update.append( 5.1793680191 )
+inverted_update.append( 4.96942305565 )
+pos_update.append( 4.36813402176 )
+Delete
+vocabulary_delete.append( 420.737991095 )
+inverted_delete.append( 214.003397942 )
+pos_delete.append( 18.6884300709 )
+*********
+no doc = 1000
+Update
+time_populate.append( 3.48297786713 )
+time_cleantext.append( 18.9537057877 )
+vocabulary_update.append( 5.16327595711 )
+inverted_update.append( 7.65982103348 )
+pos_update.append( 4.12825202942 )
+Delete
+vocabulary_delete.append( 401.954056025 )
+inverted_delete.append( 212.53471303 )
+pos_delete.append( 18.8263530731 )
+*********
+no doc = 1000
+Update
+time_populate.append( 3.32919478416 )
+time_cleantext.append( 19.641078949 )
+vocabulary_update.append( 5.44202780724 )
+inverted_update.append( 5.24280881882 )
+pos_update.append( 5.34272193909 )
+Delete
+vocabulary_delete.append( 395.136107922 )
+inverted_delete.append( 217.355252981 )
+pos_delete.append( 19.4247670174 )
+*********
+no doc = 1000
+Update
+time_populate.append( 2.89649796486 )
+time_cleantext.append( 19.1135058403 )
+vocabulary_update.append( 5.08123588562 )
+inverted_update.append( 4.33804607391 )
+pos_update.append( 4.94251704216 )
+Delete
+vocabulary_delete.append( 398.033672094 )
+inverted_delete.append( 221.785253048 )
+pos_delete.append( 19.4855909348 )
+*********
+no doc = 2500
+Update
+time_populate.append( 8.30709409714 )
+time_cleantext.append( 46.4498958588 )
+vocabulary_update.append( 12.8954899311 )
+inverted_update.append( 8.59962296486 )
+pos_update.append( 7.21768808365 )
+Delete
+vocabulary_delete.append( 951.093325853 )
+inverted_delete.append( 534.740752935 )
+pos_delete.append( 20.5596001148 )
+*********
+no doc = 2500
+Update
+time_populate.append( 7.45499396324 )
+time_cleantext.append( 48.912225008 )
+vocabulary_update.append( 10.8198771477 )
+inverted_update.append( 10.2508189678 )
+pos_update.append( 7.24270200729 )
+Delete
+vocabulary_delete.append( 928.014314175 )
+inverted_delete.append( 527.293384075 )
+pos_delete.append( 21.5298058987 )
+*********
+no doc = 2500
+Update
+time_populate.append( 9.88973498344 )
+time_cleantext.append( 47.8923020363 )
+vocabulary_update.append( 11.3503820896 )
+inverted_update.append( 9.14799809456 )
+pos_update.append( 7.31918811798 )
+Delete
+vocabulary_delete.append( 918.324018002 )
+inverted_delete.append( 543.267539024 )
+pos_delete.append( 22.9939861298 )
+*********
+no doc = 2500
+Update
+time_populate.append( 8.2253921032 )
+time_cleantext.append( 47.5031540394 )
+vocabulary_update.append( 13.5888490677 )
+inverted_update.append( 8.28622293472 )
+pos_update.append( 7.27393317223 )
+Delete
+vocabulary_delete.append( 952.529246092 )
+inverted_delete.append( 558.60739398 )
+pos_delete.append( 23.9021060467 )
+*********
+no doc = 5000
+Update
+time_populate.append( 16.3726439476 )
+time_cleantext.append( 93.7933452129 )
+vocabulary_update.append( 17.5172410011 )
+inverted_update.append( 13.5402469635 )
+pos_update.append( 13.5063090324 )
+Delete
+vocabulary_delete.append( 1933.56948709 )
+inverted_delete.append( 1176.74680495 )
+pos_delete.append( 24.5553870201 )
+*********
+no doc = 5000
+Update
+time_populate.append( 16.1456959248 )
+time_cleantext.append( 95.2373578548 )
+vocabulary_update.append( 20.2656979561 )
+inverted_update.append( 13.5432670116 )
+pos_update.append( 13.1802651882 )
+Delete
+vocabulary_delete.append( 1855.16473293 )
+*********
