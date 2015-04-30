@@ -58,6 +58,27 @@ functionUpdate = """function(startDate){
 			}
 	}"""
 
+functionDelete = """function (){						
+						//update pos_index
+						var words = db.vocabulary.find({}, {_id: 0, word: 1}).addOption(DBQuery.Option.noTimeout);
+						while(words.hasNext()){
+							var word = words.next();
+							var n = db.vocabulary.aggregate([
+											{$match: {word: word.word}},
+											{$project: { '_id': 0,  noWords: { $size: "$docIDs" }}}
+										]);
+							var noWords = 0;
+							while(n.hasNext()){ 
+								var v = n.next(); 
+								noWords = v.noWords; 
+							}
+							if (noWords == 0){
+								// delete words that have no related document
+								db.pos_index.remove({word: word.word});
+							}
+						}
+					}"""
+
 class POSIndex:
 	def __init__(self, dbname):
 		client = pymongo.MongoClient()
@@ -74,10 +95,17 @@ class POSIndex:
 		self.db.temp_collection.drop()
 	
 	#update index after docunemts are added
+	#startDate - the date
 	def updateIndex(self, startDate):
 		query = query = {"createdAt": {"$gt": startDate } }
 		self.db.words.map_reduce(mapFunction, reduceFunction, "temp_collection", query = query)
 		self.db.eval(functionCreate, {'startDate': startDate})
 		self.db.temp_collection.drop()
+	#docIDs - list of documents
+	def deleteIndex(self):
+		#this is dependent on vocabulary
+		#delete from vocabulary first
+		self.db.eval(functionDelete)
+
 
 

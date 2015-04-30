@@ -9,7 +9,7 @@ from nltk.corpus import stopwords
 reload(sys)  
 sys.setdefaultencoding('utf8')
 
-punctuation = '!"#$%&\'()*+,./:;<=>?@[\\]^_`{|}~'
+punctuation = '!"$%&\'()*+,./:;<=>?[\\]^_`{|}~' #removed special characters @ - #
 cachedStopWords_en = stopwords.words("english")
 cachedStopWords_fr = stopwords.words("french") + ["ce", "cet", "cette", "le", "les"]
 contractions_en = static.contractionsEN()
@@ -41,7 +41,8 @@ class CleanText:
 
 	#remove any urls from text
 	def removeURLs(self, text):
-		return re.sub(r'^https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
+		#return re.sub(r'^https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
+		return re.sub(r'(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?«»“”‘’]))', '', text, flags=re.MULTILINE)
 
 	#replace UTF-8 characters with ASCII ones 
 	def replaceUTF8Char(self, text, specialchars=static.specialchar_dic):

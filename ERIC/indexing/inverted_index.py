@@ -44,6 +44,26 @@ functionUpdate = """function(){
 				}
 			}"""
 
+functionDelete = """function (){
+						var words = db.inverted_index.find({},{_id: 0, word: 1}).addOption(DBQuery.Option.noTimeout);
+						while(words.hasNext()){
+							var word = words.next();
+							var n = db.inverted_index.aggregate([
+											{$match: {word: word.word}},
+											{$project: { '_id': 0, noWords: { $size: "$docIDs" }}}
+										]);
+							var noWords = 0;
+							while(n.hasNext()){ 
+								var v = n.next(); 
+								noWords = v.noWords; 
+							}
+							if (noWords == 0){
+								// delete words that have no related document
+								db.inverted_index.remove({word: word.word});
+							}
+						}
+					}"""
+
 class InvertedIndex:
 	def __init__(self, dbname):
 		client = pymongo.MongoClient()
@@ -65,3 +85,9 @@ class InvertedIndex:
 		self.db.words.map_reduce(mapFunction, reduceFunction, "temp_collection", query = query)		
 		self.db.eval(functionCreate, {'startDate': startDate})
 		self.db.temp_collection.drop()
+
+	#docIDs - list of documents
+	def deleteIndex(self, docIDs):
+		for docID in docIDs:
+			self.db.inverted_index.update({ }, { "$pull": { "docIDs" : docID } },  multi=True)
+		self.db.eval(functionDelete, {'docIDs': docIDs})

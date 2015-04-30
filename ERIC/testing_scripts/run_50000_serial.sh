@@ -21,15 +21,15 @@ getCurrentTimeInMili() {
 }
 
 FILE="../DATA_SETS/testing/rss_50000.csv"
-DB="ERICDB"
+DB="ERICDB_serial"
 echo $FILE
 for i in `seq 1 $N`
 do
 	echo "test_$i"
 	START=$(getCurrentTimeInMili)
-	python testing.py $FILE $DELIMITER $HEADER $DB $LANGUAGE >> $path"50000_perforance"
+	python testing_mongo_serial.py $FILE $DELIMITER $HEADER $DB $LANGUAGE >> $path"50000_perforance_serial"
 	END=$(getCurrentTimeInMili)
 	DIFF=$(( $END - $START ))
-	echo "********************************" >> $path"50000_perforance"
-	echo $DIFF >> $path"50000_script_times_populatedb"
+	echo "********************************" >> $path"50000_perforance_serial"
+	echo $DIFF >> $path"50000_script_times_populatedb_serial"
 done;

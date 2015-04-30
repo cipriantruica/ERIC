@@ -3,7 +3,7 @@ import threading
 import time
 import gc
 import shutil
-from datetime import timedelta
+from datetime import timedelta, datetime
 from multiprocessing.pool import ThreadPool
 from multiprocessing import cpu_count
 from concurrent.futures import ThreadPoolExecutor
@@ -21,16 +21,14 @@ from indexing.pos_index import POSIndex as PI
 # 5 - lematizer/stemmer
 
 def getDates():
-	documents = Documents.objects.only("createdAt")
-	no_docs = documents.count()
+	documents = Documents.objects.only("createdAt").order_by("-createdAt").first()
 	last_docDate = None
 	last_wordDate = None
-	if no_docs > 0:
-		last_docDate = documents[no_docs-1].createdAt
-	words = Words.objects.only("createdAt")
-	no_words = words.count()
-	if no_words > 0:
-		last_wordDate = words[no_words-1].createdAt
+	if documents:
+		last_docDate = documents.createdAt
+	words = Words.objects.only("createdAt").order_by("-createdAt").first()
+	if words:
+		last_wordDate = words.createdAt
 	return last_docDate, last_wordDate
 
 def populateDB(filename, csv_delimiter, header, language):
@@ -41,13 +39,12 @@ def populateDB(filename, csv_delimiter, header, language):
 	end = time.time() 
 	print "time_populate.append(", (end - start), ")"
 
-def clean(language, last_docDate):
+def clean(language, last_docDate=None):
 	if not last_docDate:
 		documents = Documents.objects.only("createdAt")
 	else:
 		documents = Documents.objects(Q(createdAt__gte = last_docDate)).only("createdAt")
 	no_docs = documents.count()
-	print no_docs
 	
 	list_of_dates = []
 	idx = 0
@@ -98,27 +95,91 @@ def buildNamedEntities():
 	
 	print "time build named entities:", (end - start) 
 
-
-def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', language='EN'):
-	connectDB(dbname)
-	"""
-	Documents.drop_collection()
-	Words.drop_collection()
-	last_docDate, last_wordDate = getDates()
-	populateDB(filename, csv_delimiter, header, language)
-	Documents.objects(intText__exists = False).delete()		
-	clean(language, last_docDate)
-	"""
-	#for testing
-	iv = IV(dbname)
-	pos = PI(dbname)
+def constructIndexes(dbname):
+	start = time.time()
 	vocab = VI(dbname)
-	pos.createIndex()
-	iv.createIndex()
 	vocab.createIndex()
+	end = time.time()
+	print "vocabulary_build.append(", (end - start) , ")"
+	start = time.time()
+	iv = IV(dbname)
+	iv.createIndex()
+	end = time.time()
+	print "inverted_build.append(", (end - start) , ")"
+	start = time.time()
+	pi = PI(dbname)
+	pi.createIndex()
+	end = time.time()
+	print "pos_build.append(", (end - start) , ")"
+
+def updateIndexes(dbname, startDate):
+	start = time.time()
+	vocab = VI(dbname)
+	vocab.updateIndex(startDate)
+	end = time.time()	
+	print "vocabulary_update.append(", (end - start) , ")"
+	start = time.time()
+	iv = IV(dbname)
+	iv.updateIndex(startDate)
+	end = time.time()
+	print "inverted_update.append(", (end - start) , ")"
+	start = time.time()
+	pi = PI(dbname)
+	pi.updateIndex(startDate)
+	end = time.time()
+	print "pos_update.append(", (end - start) , ")"
 	
-	#print 'date for update indexes:', last_wordDate
-	#print 'last date doc:', last_docDate
+def deleteFromIndexes(dbname, docIDs):
+	start = time.time()
+	vocab = VI(dbname)
+	vocab.deleteIndex(docIDs)
+	end = time.time()
+	print "vocabulary_delete.append(", (end - start) , ")"
+	start = time.time()
+	iv = IV(dbname)
+	iv.deleteIndex(docIDs)
+	end = time.time()
+	print "inverted_delete.append(", (end - start) , ")"
+	start = time.time()
+	pi = PI(dbname)
+	pi.deleteIndex()
+	end = time.time()
+	print "pos_delete.append(", (end - start) , ")"
+
+def deleteDocuments(startDate):
+	docIDs = []
+	documents = Documents.objects(Q(createdAt__gt = startDate)).only("id")
+	for document in documents:
+		docIDs.append(document.id)
+		document.delete()
+	for docID in docIDs:
+		Words.objects(docID=docID).delete()
+	#print docIDs
+	return docIDs
+
+def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', language='EN', initialize=0):
+	connectDB(dbname)
+	#initialize everything from the stat
+	if initialize == 0:
+		Documents.drop_collection() 
+		Words.drop_collection()	
+		populateDB(filename, csv_delimiter, header, language)
+		Documents.objects(intText__exists = False).delete()
+		clean(language)
+		constructIndexes(dbname)
+	elif initialize == 1: #update the database with new information not tested, should work
+		print 'Update'
+		last_docDate, last_wordDate = getDates()
+		populateDB(filename, csv_delimiter, header, language)
+		Documents.objects(intText__exists = False).delete()
+		clean(language, last_docDate)
+		updateIndexes(dbname, last_wordDate)
+		#print 'last date words:', last_wordDate
+		#print 'last date documents:', last_docDate		
+	#elif initialize == 2: #update indexes after documents where deleted
+		print 'Delete'
+		docIDs = deleteDocuments(last_docDate)
+		deleteFromIndexes(dbname, docIDs)
 	#NamedEntities.drop_collection()
 	#buildNamedEntities()
 	
@@ -129,4 +190,5 @@ if __name__ == "__main__":
 	header = bool(sys.argv[3])
 	dbname = sys.argv[4]
 	language = sys.argv[5]
-	main(filename, csv_delimiter, header, dbname, language)
+	initialize = int(sys.argv[6])
+	main(filename, csv_delimiter, header, dbname, language, initialize)

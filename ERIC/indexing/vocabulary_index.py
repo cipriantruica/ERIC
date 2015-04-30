@@ -13,7 +13,7 @@ reduceFunction = """function(key, values) {
 						var result = {'ids': []};
 						values.forEach(function (v) {
 							result.ids = v.ids.concat(result.ids);
-						})
+						});
 						return result;
 					}"""
 
@@ -51,6 +51,33 @@ functionUpdate = """function(startDate){
 			}
 		}"""
 
+functionDelete = """function (){
+						var noDocs = db.documents.count();
+						//update idf
+						var words = db.vocabulary.find({},{_id: 0, word: 1}).addOption(DBQuery.Option.noTimeout);
+						while(words.hasNext()){
+							var word = words.next();
+							var n = db.vocabulary.aggregate([
+								{$match: {word: word.word}},
+								{$project: { noWords: { $size: "$docIDs" }}}
+							]);
+							var noWords = 0;
+							while(n.hasNext()){ 
+								var v = n.next(); 
+								noWords = v.noWords; 
+							}
+							if (noWords == 0){
+								// delete words that have no related document								
+								db.vocabulary.remove({word: word.word})
+							}else{
+								//update tfidf
+								var widf = Math.round(Math.log(noDocs/noWords) * 100)/100;
+								db.vocabulary.update({word: word.word}, {$set: {idf: widf}});
+							}
+						}
+					}"""
+
+
 class VocabularyIndex:
 	def __init__(self, dbname):
 		client = pymongo.MongoClient()
@@ -71,4 +98,12 @@ class VocabularyIndex:
 		query = {"createdAt": {"$gt": startDate } }
 		self.db.words.map_reduce(mapFunction, reduceFunction, "temp_collection", query = query)
 		self.db.eval(functionCreate, {'startDate': startDate})
-		self.db.temp_collection.drop()
+		#self.db.temp_collection.drop()
+
+	#docIDs - list of documents
+	def deleteIndex(self, docIDs):
+		#this is dependent on vocabulary
+		#delete from vocabulary first
+		for docID in docIDs:
+			self.db.vocabulary.update({ }, { "$pull": { "docIDs" :{ "docID": docID } }}, multi=True );
+		self.db.eval(functionDelete)
