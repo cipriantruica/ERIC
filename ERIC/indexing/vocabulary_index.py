@@ -31,6 +31,7 @@ functionCreate = """function(){
 		}"""
 
 functionUpdate = """function(startDate){
+			var noDocs = db.documents.count();
 			var items = db.temp_collection.find().addOption(DBQuery.Option.noTimeout);
 			while(items.hasNext()){
 				var item = items.next();
