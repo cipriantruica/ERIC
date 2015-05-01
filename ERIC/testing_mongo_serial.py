@@ -174,12 +174,16 @@ def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', langu
 		Documents.objects(intText__exists = False).delete()
 		clean(language, last_docDate)
 		updateIndexes(dbname, last_wordDate)
+		print 'Update Create indexes'
+		constructIndexes(dbname)
 		#print 'last date words:', last_wordDate
 		#print 'last date documents:', last_docDate		
 	#elif initialize == 2: #update indexes after documents where deleted
 		print 'Delete'
 		docIDs = deleteDocuments(last_docDate)
 		deleteFromIndexes(dbname, docIDs)
+		print 'Delete Create Indexes'
+		constructIndexes(dbname)
 	#NamedEntities.drop_collection()
 	#buildNamedEntities()
 	
