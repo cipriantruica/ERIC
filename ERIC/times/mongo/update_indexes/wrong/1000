@@ -1,0 +1,166 @@
+1000
+
+time_populate = []
+time_cleantext = []
+time_populate.append( 3.10690689087 )
+time_cleantext.append( 19.7615721226 )
+time_populate.append( 3.48297786713 )
+time_cleantext.append( 18.9537057877 )
+time_populate.append( 3.32919478416 )
+time_cleantext.append( 19.641078949 )
+time_populate.append( 2.89649796486 )
+time_cleantext.append( 19.1135058403 )
+time_populate.append( 4.07793498039 )
+time_cleantext.append( 19.9611949921 )
+time_populate.append( 3.43138599396 )
+time_cleantext.append( 18.9680318832 )
+time_populate.append( 2.99956488609 )
+time_cleantext.append( 19.1941788197 )
+time_populate.append( 3.50007009506 )
+time_cleantext.append( 19.987112999 )
+time_populate.append( 3.80576300621 )
+time_cleantext.append( 19.1613130569 )
+time_populate.append( 4.43142390251 )
+time_cleantext.append( 20.0602388382 )
+
+#*****************************
+#Update
+#*****************************
+vocabulary_update = []
+inverted_update = []
+pos_update = []
+vocabulary_update.append( 5.10991692543 )
+inverted_update.append( 4.48354196548 )
+pos_update.append( 4.0714070797 )
+vocabulary_update.append( 5.53716206551 )
+inverted_update.append( 4.22832012177 )
+pos_update.append( 5.10746979713 )
+vocabulary_update.append( 5.01104998589 )
+inverted_update.append( 5.49263310432 )
+pos_update.append( 3.8690199852 )
+vocabulary_update.append( 5.0926668644 )
+inverted_update.append( 4.2061009407 )
+pos_update.append( 4.63965392113 )
+vocabulary_update.append( 5.1793680191 )
+inverted_update.append( 4.96942305565 )
+pos_update.append( 4.36813402176 )
+vocabulary_update.append( 5.16327595711 )
+inverted_update.append( 7.65982103348 )
+pos_update.append( 4.12825202942 )
+vocabulary_update.append( 5.44202780724 )
+inverted_update.append( 5.24280881882 )
+pos_update.append( 5.34272193909 )
+vocabulary_update.append( 5.08123588562 )
+inverted_update.append( 4.33804607391 )
+pos_update.append( 4.94251704216 )
+vocabulary_update.append( 5.06856894493 )
+inverted_update.append( 4.23837304115 )
+pos_update.append( 5.38728499413 )
+vocabulary_update.append( 5.68650197983 )
+inverted_update.append( 4.24370884895 )
+pos_update.append( 4.61753702164 )
+
+#*****************************
+#Update Create Index
+#*****************************
+vocabulary_build_update = []
+inverted_build_update = []
+pos_build_update = []
+vocabulary_build_update.append( 199.930197001 )
+inverted_build_update.append( 122.953331947 )
+pos_build_update.append( 92.6864981651 )
+vocabulary_build_update.append( 186.865756035 )
+inverted_build_update.append( 122.207207918 )
+pos_build_update.append( 92.8139109612 )
+vocabulary_build_update.append( 193.461879015 )
+inverted_build_update.append( 123.604169846 )
+pos_build_update.append( 92.0717458725 )
+vocabulary_build_update.append( 195.168434858 )
+inverted_build_update.append( 121.55813694 )
+pos_build_update.append( 92.2468969822 )
+vocabulary_build_update.append( 182.780687094 )
+inverted_build_update.append( 122.585227013 )
+pos_build_update.append( 92.4887149334 )
+vocabulary_build_update.append( 182.486777067 )
+inverted_build_update.append( 124.066618919 )
+pos_build_update.append( 91.3376348019 )
+
+#*****************************
+#Delete
+#*****************************
+vocabulary_delete = []
+inverted_delete = []
+pos_delete = []
+vocabulary_delete.append( 420.737991095 )
+inverted_delete.append( 214.003397942 )
+pos_delete.append( 18.6884300709 )
+vocabulary_delete.append( 401.954056025 )
+inverted_delete.append( 212.53471303 )
+pos_delete.append( 18.8263530731 )
+vocabulary_delete.append( 395.136107922 )
+inverted_delete.append( 217.355252981 )
+pos_delete.append( 19.4247670174 )
+vocabulary_delete.append( 398.033672094 )
+inverted_delete.append( 221.785253048 )
+pos_delete.append( 19.4855909348 )
+vocabulary_delete.append( 670.696573973 )
+inverted_delete.append( 275.805171967 )
+pos_delete.append( 18.9770669937 )
+vocabulary_delete.append( 681.450041056 )
+inverted_delete.append( 273.596341133 )
+pos_delete.append( 19.0620789528 )
+vocabulary_delete.append( 676.733115911 )
+inverted_delete.append( 273.902308941 )
+pos_delete.append( 18.9467289448 )
+vocabulary_delete.append( 674.608745098 )
+inverted_delete.append( 275.119732141 )
+pos_delete.append( 18.9487910271 )
+vocabulary_delete.append( 670.998593092 )
+inverted_delete.append( 275.835382938 )
+pos_delete.append( 18.882930994 )
+vocabulary_delete.append( 673.591613054 )
+inverted_delete.append( 273.96052599 )
+pos_delete.append( 19.0282289982 )
+
+#*****************************
+#Delete Create Index
+#*****************************
+vocabulary_build_delete = []
+inverted_build_delete = []
+pos_build_delete = []
+vocabulary_build_delete.append( 180.150151014 )
+inverted_build_delete.append( 120.970209837 )
+pos_build_delete.append( 90.0765910149 )
+vocabulary_build_delete.append( 184.88509202 )
+inverted_build_delete.append( 120.823362827 )
+pos_build_delete.append( 91.1615040302 )
+vocabulary_build_delete.append( 195.793516159 )
+inverted_build_delete.append( 121.318973064 )
+pos_build_delete.append( 91.148900032 )
+vocabulary_build_delete.append( 180.355306149 )
+inverted_build_delete.append( 121.200906992 )
+pos_build_delete.append( 90.4548621178 )
+vocabulary_build_delete.append( 195.976974964 )
+inverted_build_delete.append( 121.705105066 )
+pos_build_delete.append( 91.9834821224 )
+vocabulary_build_delete.append( 176.432330132 )
+inverted_build_delete.append( 120.757631063 )
+pos_build_delete.append( 89.944917202 )
+
+print 'update vocabulary: ', round(sum(vocabulary_update)/len(vocabulary_update), 2)
+print 'update IV: ', round(sum(inverted_update)/len(inverted_update), 2)
+print 'update POS: ', round(sum(pos_update)/len(pos_update), 2)
+print 'create update vocabulary: ', round(sum(vocabulary_build_update)/len(vocabulary_build_update), 2)
+print 'create update IV: ', round(sum(inverted_build_update)/len(inverted_build_update), 2)
+print 'create update POS: ', round(sum(pos_build_update)/len(pos_build_update), 2)
+print 'delete vocabulary: ', round(sum(vocabulary_delete)/len(vocabulary_delete), 2)
+print 'delete IV: ', round(sum(inverted_delete)/len(inverted_delete), 2)
+print 'delete POS: ', round(sum(pos_delete)/len(pos_delete), 2)
+print 'create delete vocabulary: ', round(sum(vocabulary_build_delete)/len(vocabulary_build_delete), 2)
+print 'create delete IV: ', round(sum(inverted_build_delete)/len(inverted_build_delete), 2)
+print 'create delete POS: ', round(sum(pos_build_delete)/len(pos_build_delete), 2)
+
+print 'update: ', round(sum(inverted_update)/len(inverted_update), 2), '\t', round(sum(inverted_build_update)/len(inverted_build_update), 2),'\t', round(sum(vocabulary_update)/len(vocabulary_update), 2), '\t',round(sum(vocabulary_build_update)/len(vocabulary_build_update), 2), '\t',round(sum(pos_update)/len(pos_update), 2), '\t',round(sum(pos_build_update)/len(pos_build_update), 2)
+
+
+print 'delete IV: ', round(sum(inverted_delete)/len(inverted_delete), 2), '\t',round(sum(inverted_build_delete)/len(inverted_build_delete), 2), '\t',round(sum(vocabulary_delete)/len(vocabulary_delete), 2), '\t',round(sum(vocabulary_build_delete)/len(vocabulary_build_delete), 2), '\t',round(sum(pos_delete)/len(pos_delete), 2), '\t',round(sum(pos_build_delete)/len(pos_build_delete), 2)
