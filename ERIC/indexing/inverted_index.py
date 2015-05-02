@@ -70,4 +70,4 @@ class InvertedIndex:
 	def deleteIndex(self, docIDs):
 		for docID in docIDs:
 			self.db.inverted_index.update({ }, { "$pull": { "docIDs" : docID } },  multi=True)
-		self.db.inverted_index.remove({"docIDs" : {$size: 0}}, multi=True )
+		self.db.inverted_index.remove({"docIDs" : {"$size": 0}}, multi=True )

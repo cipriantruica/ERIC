@@ -99,5 +99,5 @@ class VocabularyIndex:
 	def deleteIndex(self, docIDs):
 		for docID in docIDs:
 			self.db.vocabulary.update({ }, { "$pull": { "docIDs" :{ "docID": docID } }}, multi=True );
-		self.db.vocabulary.remove({"docIDs" : {$size: 0}}, multi=True )
+		self.db.vocabulary.remove({"docIDs" : {"$size": 0}}, multi=True )
 		self.db.eval(functionDelete)
