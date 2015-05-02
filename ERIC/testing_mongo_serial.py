@@ -95,22 +95,22 @@ def buildNamedEntities():
 	
 	print "time build named entities:", (end - start) 
 
-def constructIndexes(dbname):
+def constructIndexes(dbname, op=''):
 	start = time.time()
 	vocab = VI(dbname)
 	vocab.createIndex()
 	end = time.time()
-	print "vocabulary_build.append(", (end - start) , ")"
+	print "vocabulary_build" + op + ".append(", (end - start) , ")"
 	start = time.time()
 	iv = IV(dbname)
 	iv.createIndex()
 	end = time.time()
-	print "inverted_build.append(", (end - start) , ")"
+	print "inverted_build" + op + ".append(", (end - start) , ")"
 	start = time.time()
 	pi = PI(dbname)
 	pi.createIndex()
 	end = time.time()
-	print "pos_build.append(", (end - start) , ")"
+	print "pos_build" + op + ".append(", (end - start) , ")"
 
 def updateIndexes(dbname, startDate):
 	start = time.time()
@@ -167,23 +167,31 @@ def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', langu
 		Documents.objects(intText__exists = False).delete()
 		clean(language)
 		constructIndexes(dbname)
-	elif initialize == 1: #update the database with new information not tested, should work
-		print 'Update'
+	elif initialize == 1: #update the database with new information not tested, should work		
 		last_docDate, last_wordDate = getDates()
 		populateDB(filename, csv_delimiter, header, language)
 		Documents.objects(intText__exists = False).delete()
 		clean(language, last_docDate)
+		print '#*********************#'
+		print '#Update               #'
+		print '#*********************#'
 		updateIndexes(dbname, last_wordDate)
-		print 'Update Create indexes'
-		constructIndexes(dbname)
+		print '#*********************#'
+		print '#Update Create indexes#'
+		print '#*********************#'
+		constructIndexes(dbname, '_update')
 		#print 'last date words:', last_wordDate
 		#print 'last date documents:', last_docDate		
 	#elif initialize == 2: #update indexes after documents where deleted
-		print 'Delete'
+		print '#*********************#'
+		print '#Delete               #'
+		print '#*********************#'
 		docIDs = deleteDocuments(last_docDate)
 		deleteFromIndexes(dbname, docIDs)
-		print 'Delete Create Indexes'
-		constructIndexes(dbname)
+		print '#*********************#'
+		print '#Delete Create Indexes#'
+		print '#*********************#'
+		constructIndexes(dbname, '_delete')
 	#NamedEntities.drop_collection()
 	#buildNamedEntities()
 	
