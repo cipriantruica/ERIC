@@ -1,587 +1,263 @@
+vocabulary_build.append(198.510857105)
+inverted_build.append(121.121415138)
+pos_build.append(91.5056140423)
 no doc = 500
-Update
-time_populate.append( 5.70088195801 )
-time_cleantext.append( 9.91646313667 )
-vocabulary_update.append( 5.10452699661 )
-inverted_update.append( 2.79886317253 )
-pos_update.append( 3.23146104813 )
-Delete
-vocabulary_delete.append( 364.709884882 )
-inverted_delete.append( 145.08685112 )
-pos_delete.append( 17.4029738903 )
-*********
+#*********************#
+#Update               #
+#*********************#
+vocabulary_update.append(1268.37727213)
+inverted_update.append(148.300236225)
+pos_update.append(132.281346083)
+#*********************#
+#Delete               #
+#*********************#
+vocabulary_delete.append(1141.37649608)
+inverted_delete.append(1.92152404785)
+pos_delete.append(90.8879759312)
+#*********************#
+#Update Create Indexes#
+#*********************#
+vocabulary_build_update.append(197.268795967)
+inverted_build_update.append(122.324357986)
+pos_build_update.append(92.4456219673)
+#*********************#
+#Delete Create Indexes#
+#*********************#
+vocabulary_build_delete.append(205.655544996)
+inverted_build_delete.append(122.966219902)
+pos_build_delete.append(91.2829349041)
+*****************************
 no doc = 500
-Update
-time_populate.append( 1.68725395203 )
-time_cleantext.append( 9.94170618057 )
-vocabulary_update.append( 2.97882604599 )
-inverted_update.append( 2.49260997772 )
-pos_update.append( 2.36988306046 )
-Delete
-vocabulary_delete.append( 226.897402048 )
-inverted_delete.append( 111.080842972 )
-pos_delete.append( 17.751180172 )
-*********
+#*********************#
+#Update               #
+#*********************#
+vocabulary_update.append(1123.10006022)
+inverted_update.append(0.755270957947)
+pos_update.append(0.622653007507)
+#*********************#
+#Delete               #
+#*********************#
+vocabulary_delete.append(1121.80160999)
+inverted_delete.append(0.799050807953)
+pos_delete.append(91.7529630661)
+#*********************#
+#Update Create Indexes#
+#*********************#
+vocabulary_build_update.append(182.153846979)
+inverted_build_update.append(127.090582848)
+pos_build_update.append(90.9981870651)
+#*********************#
+#Delete Create Indexes#
+#*********************#
+vocabulary_build_delete.append(196.124070168)
+inverted_build_delete.append(122.707914114)
+pos_build_delete.append(93.0898799896)
+*****************************
 no doc = 500
-Update
-time_populate.append( 1.44811487198 )
-time_cleantext.append( 11.310147047 )
-vocabulary_update.append( 3.21290493011 )
-inverted_update.append( 2.56100797653 )
-pos_update.append( 2.41683983803 )
-Delete
-vocabulary_delete.append( 226.404403925 )
-inverted_delete.append( 114.411331177 )
-pos_delete.append( 17.9629559517 )
-*********
+#*********************#
+#Update               #
+#*********************#
+vocabulary_update.append(1131.14420986)
+inverted_update.append(0.754586935043)
+pos_update.append(0.595418930054)
+#*********************#
+#Delete               #
+#*********************#
+vocabulary_delete.append(1130.48639894)
+inverted_delete.append(0.807540178299)
+pos_delete.append(92.1289319992)
+#*********************#
+#Update Create Indexes#
+#*********************#
+vocabulary_build_update.append(182.612964869)
+inverted_build_update.append(122.451899052)
+pos_build_update.append(91.4518318176)
+#*********************#
+#Delete Create Indexes#
+#*********************#
+vocabulary_build_delete.append(195.24534893)
+inverted_build_delete.append(121.682805061)
+pos_build_delete.append(91.8748428822)
+*****************************
 no doc = 500
-Update
-time_populate.append( 1.4442191124 )
-time_cleantext.append( 9.97122001648 )
-vocabulary_update.append( 3.37078022957 )
-inverted_update.append( 2.52880597115 )
-pos_update.append( 2.40422511101 )
-Delete
-vocabulary_delete.append( 228.99793911 )
-inverted_delete.append( 112.741851091 )
-pos_delete.append( 18.1827259064 )
-*********
-no doc = 500
-Update
-time_populate.append( 2.38820195198 )
-time_cleantext.append( 10.2570121288 )
-vocabulary_update.append( 3.17259502411 )
-inverted_update.append( 2.56721305847 )
-pos_update.append( 2.46921896935 )
-Delete
-vocabulary_delete.append( 229.336081028 )
-inverted_delete.append( 114.214479208 )
-pos_delete.append( 18.3094007969 )
-*********
+#*********************#
+#Update               #
+#*********************#
+vocabulary_update.append(1133.16432881)
+inverted_update.append(0.787437915802)
+pos_update.append(0.605332136154)
+#*********************#
+#Delete               #
+#*********************#
+vocabulary_delete.append(1123.74236202)
+inverted_delete.append(0.786774158478)
+pos_delete.append(90.5310869217)
+#*********************#
+#Update Create Indexes#
+#*********************#
+vocabulary_build_update.append(196.454441071)
+inverted_build_update.append(122.661164999)
+pos_build_update.append(91.1935510635)
+#*********************#
+#Delete Create Indexes#
+#*********************#
+vocabulary_build_delete.append(196.368565083)
+inverted_build_delete.append(122.09027791)
+pos_build_delete.append(91.4025080204)
+*****************************
 no doc = 1000
-Update
-time_populate.append( 3.10690689087 )
-time_cleantext.append( 19.7615721226 )
-vocabulary_update.append( 5.1793680191 )
-inverted_update.append( 4.96942305565 )
-pos_update.append( 4.36813402176 )
-Delete
-vocabulary_delete.append( 420.737991095 )
-inverted_delete.append( 214.003397942 )
-pos_delete.append( 18.6884300709 )
-*********
+#*********************#
+#Update               #
+#*********************#
+vocabulary_update.append(1282.61131692)
+inverted_update.append(152.064703941)
+pos_update.append(134.739002943)
+#*********************#
+#Delete               #
+#*********************#
+vocabulary_delete.append(1138.84549189)
+inverted_delete.append(1.95561909676)
+pos_delete.append(91.7003149986)
+#*********************#
+#Update Create Indexes#
+#*********************#
+vocabulary_build_update.append(200.70617485)
+inverted_build_update.append(122.911895037)
+pos_build_update.append(92.9069468975)
+#*********************#
+#Delete Create Indexes#
+#*********************#
+vocabulary_build_delete.append(197.48105216)
+inverted_build_delete.append(122.747699022)
+pos_build_delete.append(92.5018100739)
+*****************************
 no doc = 1000
-Update
-time_populate.append( 3.48297786713 )
-time_cleantext.append( 18.9537057877 )
-vocabulary_update.append( 5.16327595711 )
-inverted_update.append( 7.65982103348 )
-pos_update.append( 4.12825202942 )
-Delete
-vocabulary_delete.append( 401.954056025 )
-inverted_delete.append( 212.53471303 )
-pos_delete.append( 18.8263530731 )
-*********
-no doc = 1000
-Update
-time_populate.append( 3.32919478416 )
-time_cleantext.append( 19.641078949 )
-vocabulary_update.append( 5.44202780724 )
-inverted_update.append( 5.24280881882 )
-pos_update.append( 5.34272193909 )
-Delete
-vocabulary_delete.append( 395.136107922 )
-inverted_delete.append( 217.355252981 )
-pos_delete.append( 19.4247670174 )
-*********
-no doc = 1000
-Update
-time_populate.append( 2.89649796486 )
-time_cleantext.append( 19.1135058403 )
-vocabulary_update.append( 5.08123588562 )
-inverted_update.append( 4.33804607391 )
-pos_update.append( 4.94251704216 )
-Delete
-vocabulary_delete.append( 398.033672094 )
-inverted_delete.append( 221.785253048 )
-pos_delete.append( 19.4855909348 )
-*********
+#*********************#
+#Update               #
+#*********************#
+vocabulary_update.append(1145.79231501)
+inverted_update.append(1.00952601433)
+pos_update.append(0.843313932419)
+#*********************#
+#Delete               #
+#*********************#
+vocabulary_delete.append(1131.30563998)
+inverted_delete.append(0.8068151474)
+pos_delete.append(92.3074729443)
+#*********************#
+#Update Create Indexes#
+#*********************#
+vocabulary_build_update.append(216.235715866)
+inverted_build_update.append(129.418017149)
+pos_build_update.append(93.2500908375)
+#*********************#
+#Delete Create Indexes#
+#*********************#
+vocabulary_build_delete.append(200.92318511)
+inverted_build_delete.append(124.100059986)
+pos_build_delete.append(93.2599451542)
+*****************************
 no doc = 2500
-Update
-time_populate.append( 8.30709409714 )
-time_cleantext.append( 46.4498958588 )
-vocabulary_update.append( 12.8954899311 )
-inverted_update.append( 8.59962296486 )
-pos_update.append( 7.21768808365 )
-Delete
-vocabulary_delete.append( 951.093325853 )
-inverted_delete.append( 534.740752935 )
-pos_delete.append( 20.5596001148 )
-*********
+#*********************#
+#Update               #
+#*********************#
+vocabulary_update.append(1433.92814207)
+inverted_update.append(288.768049002)
+pos_update.append(258.491556168)
+#*********************#
+#Delete               #
+#*********************#
+vocabulary_delete.append(1151.28381109)
+inverted_delete.append(2.195759058)
+pos_delete.append(92.014218092)
+#*********************#
+#Update Create Indexes#
+#*********************#
+vocabulary_build_update.append(206.545148134)
+inverted_build_update.append(124.698348045)
+pos_build_update.append(95.195207119)
+#*********************#
+#Delete Create Indexes#
+#*********************#
+vocabulary_build_delete.append(187.177232981)
+inverted_build_delete.append(127.118290901)
+pos_build_delete.append(94.4062399864)
+*****************************
 no doc = 2500
-Update
-time_populate.append( 7.45499396324 )
-time_cleantext.append( 48.912225008 )
-vocabulary_update.append( 10.8198771477 )
-inverted_update.append( 10.2508189678 )
-pos_update.append( 7.24270200729 )
-Delete
-vocabulary_delete.append( 928.014314175 )
-inverted_delete.append( 527.293384075 )
-pos_delete.append( 21.5298058987 )
-*********
-no doc = 2500
-Update
-time_populate.append( 9.88973498344 )
-time_cleantext.append( 47.8923020363 )
-vocabulary_update.append( 11.3503820896 )
-inverted_update.append( 9.14799809456 )
-pos_update.append( 7.31918811798 )
-Delete
-vocabulary_delete.append( 918.324018002 )
-inverted_delete.append( 543.267539024 )
-pos_delete.append( 22.9939861298 )
-*********
-no doc = 2500
-Update
-time_populate.append( 8.2253921032 )
-time_cleantext.append( 47.5031540394 )
-vocabulary_update.append( 13.5888490677 )
-inverted_update.append( 8.28622293472 )
-pos_update.append( 7.27393317223 )
-Delete
-vocabulary_delete.append( 952.529246092 )
-inverted_delete.append( 558.60739398 )
-pos_delete.append( 23.9021060467 )
-*********
+#*********************#
+#Update               #
+#*********************#
+vocabulary_update.append(1173.85659409)
+inverted_update.append(0.358724117279)
+pos_update.append(0.387814998627)
+#*********************#
+#Delete               #
+#*********************#
+vocabulary_delete.append(1169.23069692)
+inverted_delete.append(0.821393013)
+pos_delete.append(94.2888140678)
+#*********************#
+#Update Create Indexes#
+#*********************#
+vocabulary_build_update.append(201.821012974)
+inverted_build_update.append(127.443979979)
+pos_build_update.append(95.2752761841)
+#*********************#
+#Delete Create Indexes#
+#*********************#
+vocabulary_build_delete.append(202.999106169)
+inverted_build_delete.append(126.167501926)
+pos_build_delete.append(94.6435289383)
+*****************************
 no doc = 5000
-Update
-time_populate.append( 16.3726439476 )
-time_cleantext.append( 93.7933452129 )
-vocabulary_update.append( 17.5172410011 )
-inverted_update.append( 13.5402469635 )
-pos_update.append( 13.5063090324 )
-Delete
-vocabulary_delete.append( 1933.56948709 )
-inverted_delete.append( 1176.74680495 )
-pos_delete.append( 24.5553870201 )
-*********
+#*********************#
+#Update               #
+#*********************#
+vocabulary_update.append(1555.34039092)
+inverted_update.append(402.072042942)
+pos_update.append(359.435033083)
+#*********************#
+#Delete               #
+#*********************#
+vocabulary_delete.append(1184.64558387)
+inverted_delete.append(2.35346913338)
+pos_delete.append(95.1597559452)
+#*********************#
+#Update Create Indexes#
+#*********************#
+vocabulary_build_update.append(207.835515976)
+inverted_build_update.append(129.537153006)
+pos_build_update.append(97.3999819756)
+#*********************#
+#Delete Create Indexes#
+#*********************#
+vocabulary_build_delete.append(194.044808149)
+inverted_build_delete.append(129.824034929)
+pos_build_delete.append(97.5282859802)
+*****************************
 no doc = 5000
-Update
-time_populate.append( 16.1456959248 )
-time_cleantext.append( 95.2373578548 )
-vocabulary_update.append( 20.2656979561 )
-inverted_update.append( 13.5432670116 )
-pos_update.append( 13.1802651882 )
-Delete
-vocabulary_delete.append( 1855.16473293 )
-*********
-no doc = 500
-Update
-time_populate.append( 6.7841129303 )
-time_cleantext.append( 10.2942938805 )
-vocabulary_update.append( 4.96126103401 )
-inverted_update.append( 2.76129412651 )
-pos_update.append( 3.2686920166 )
-Update Create indexes
-vocabulary_build.append( 189.759978056 )
-inverted_build.append( 122.834897041 )
-pos_build.append( 95.5502040386 )
-Delete
-vocabulary_delete.append( 364.403194904 )
-inverted_delete.append( 145.308058977 )
-pos_delete.append( 18.8939650059 )
-Delete Create Indexes
-vocabulary_build.append( 189.554550886 )
-inverted_build.append( 121.775951862 )
-pos_build.append( 91.3823020458 )
-*********
-no doc = 500
-Update
-time_populate.append( 1.56629300117 )
-time_cleantext.append( 10.8975260258 )
-vocabulary_update.append( 3.15993380547 )
-inverted_update.append( 2.59579181671 )
-pos_update.append( 2.41405391693 )
-Update Create indexes
-vocabulary_build.append( 193.546002865 )
-inverted_build.append( 122.429121971 )
-pos_build.append( 90.2474489212 )
-Delete
-vocabulary_delete.append( 361.903553009 )
-inverted_delete.append( 146.076445103 )
-pos_delete.append( 18.9413049221 )
-Delete Create Indexes
-vocabulary_build.append( 193.888230085 )
-inverted_build.append( 123.754503965 )
-pos_build.append( 92.0494010448 )
-*********
-no doc = 500
-Update
-time_populate.append( 1.43669915199 )
-time_cleantext.append( 9.97567009926 )
-vocabulary_update.append( 3.42349100113 )
-inverted_update.append( 2.5428609848 )
-pos_update.append( 2.6928589344 )
-Update Create indexes
-vocabulary_build.append( 197.641466856 )
-inverted_build.append( 124.212979078 )
-pos_build.append( 90.9767138958 )
-Delete
-vocabulary_delete.append( 362.012700796 )
-inverted_delete.append( 145.641644001 )
-pos_delete.append( 19.0116970539 )
-Delete Create Indexes
-vocabulary_build.append( 192.606569052 )
-inverted_build.append( 121.532439947 )
-pos_build.append( 92.0548069477 )
-*********
-no doc = 500
-Update
-time_populate.append( 2.11321115494 )
-time_cleantext.append( 9.97202301025 )
-vocabulary_update.append( 3.02908182144 )
-inverted_update.append( 2.66973805428 )
-pos_update.append( 2.38013696671 )
-Update Create indexes
-vocabulary_build.append( 196.678502083 )
-inverted_build.append( 121.900572062 )
-pos_build.append( 91.4608199596 )
-Delete
-vocabulary_delete.append( 360.991158009 )
-inverted_delete.append( 145.75059104 )
-pos_delete.append( 18.949297905 )
-Delete Create Indexes
-vocabulary_build.append( 196.151897907 )
-inverted_build.append( 122.415510893 )
-pos_build.append( 91.6535971165 )
-*********
-no doc = 500
-Update
-time_populate.append( 1.42439103127 )
-time_cleantext.append( 9.80441808701 )
-vocabulary_update.append( 3.16152095795 )
-inverted_update.append( 2.56160497665 )
-pos_update.append( 2.43493103981 )
-Update Create indexes
-vocabulary_build.append( 196.301840067 )
-inverted_build.append( 125.521718025 )
-pos_build.append( 93.3954889774 )
-Delete
-vocabulary_delete.append( 359.390825987 )
-inverted_delete.append( 145.945843935 )
-pos_delete.append( 19.0957291126 )
-Delete Create Indexes
-vocabulary_build.append( 183.744349003 )
-inverted_build.append( 121.086297035 )
-pos_build.append( 91.5507159233 )
-*********
-no doc = 500
-Update
-time_populate.append( 1.42256522179 )
-time_cleantext.append( 9.84964299202 )
-vocabulary_update.append( 3.06728696823 )
-inverted_update.append( 2.53251409531 )
-pos_update.append( 2.4323759079 )
-Update Create indexes
-vocabulary_build.append( 198.031891823 )
-inverted_build.append( 122.032516003 )
-pos_build.append( 91.3495409489 )
-Delete
-vocabulary_delete.append( 361.934303045 )
-inverted_delete.append( 144.822731018 )
-pos_delete.append( 19.0624911785 )
-Delete Create Indexes
-vocabulary_build.append( 179.89501214 )
-inverted_build.append( 120.782824039 )
-pos_build.append( 90.6966211796 )
-*********
-no doc = 1000
-Update
-time_populate.append( 4.07793498039 )
-time_cleantext.append( 19.9611949921 )
-vocabulary_update.append( 5.10991692543 )
-inverted_update.append( 4.48354196548 )
-pos_update.append( 4.0714070797 )
-Update Create indexes
-vocabulary_build.append( 199.930197001 )
-inverted_build.append( 122.953331947 )
-pos_build.append( 92.6864981651 )
-Delete
-vocabulary_delete.append( 670.696573973 )
-inverted_delete.append( 275.805171967 )
-pos_delete.append( 18.9770669937 )
-Delete Create Indexes
-vocabulary_build.append( 176.432330132 )
-inverted_build.append( 120.757631063 )
-pos_build.append( 89.944917202 )
-*********
-no doc = 1000
-Update
-time_populate.append( 4.43142390251 )
-time_cleantext.append( 20.0602388382 )
-vocabulary_update.append( 5.53716206551 )
-inverted_update.append( 4.22832012177 )
-pos_update.append( 5.10746979713 )
-Update Create indexes
-vocabulary_build.append( 186.865756035 )
-inverted_build.append( 122.207207918 )
-pos_build.append( 92.8139109612 )
-Delete
-vocabulary_delete.append( 681.450041056 )
-inverted_delete.append( 273.596341133 )
-pos_delete.append( 19.0620789528 )
-Delete Create Indexes
-vocabulary_build.append( 195.976974964 )
-inverted_build.append( 121.705105066 )
-pos_build.append( 91.9834821224 )
-*********
-no doc = 1000
-Update
-time_populate.append( 3.80576300621 )
-time_cleantext.append( 19.1613130569 )
-vocabulary_update.append( 5.01104998589 )
-inverted_update.append( 5.49263310432 )
-pos_update.append( 3.8690199852 )
-Update Create indexes
-vocabulary_build.append( 193.461879015 )
-inverted_build.append( 123.604169846 )
-pos_build.append( 92.0717458725 )
-Delete
-vocabulary_delete.append( 676.733115911 )
-inverted_delete.append( 273.902308941 )
-pos_delete.append( 18.9467289448 )
-Delete Create Indexes
-vocabulary_build.append( 180.355306149 )
-inverted_build.append( 121.200906992 )
-pos_build.append( 90.4548621178 )
-*********
-no doc = 1000
-Update
-time_populate.append( 3.50007009506 )
-time_cleantext.append( 19.987112999 )
-vocabulary_update.append( 5.0926668644 )
-inverted_update.append( 4.2061009407 )
-pos_update.append( 4.63965392113 )
-Update Create indexes
-vocabulary_build.append( 195.168434858 )
-inverted_build.append( 121.55813694 )
-pos_build.append( 92.2468969822 )
-Delete
-vocabulary_delete.append( 674.608745098 )
-inverted_delete.append( 275.119732141 )
-pos_delete.append( 18.9487910271 )
-Delete Create Indexes
-vocabulary_build.append( 195.793516159 )
-inverted_build.append( 121.318973064 )
-pos_build.append( 91.148900032 )
-*********
-no doc = 1000
-Update
-time_populate.append( 2.99956488609 )
-time_cleantext.append( 19.1941788197 )
-vocabulary_update.append( 5.68650197983 )
-inverted_update.append( 4.24370884895 )
-pos_update.append( 4.61753702164 )
-Update Create indexes
-vocabulary_build.append( 182.780687094 )
-inverted_build.append( 122.585227013 )
-pos_build.append( 92.4887149334 )
-Delete
-vocabulary_delete.append( 670.998593092 )
-inverted_delete.append( 275.835382938 )
-pos_delete.append( 18.882930994 )
-Delete Create Indexes
-vocabulary_build.append( 184.88509202 )
-inverted_build.append( 120.823362827 )
-pos_build.append( 91.1615040302 )
-*********
-no doc = 1000
-Update
-time_populate.append( 3.43138599396 )
-time_cleantext.append( 18.9680318832 )
-vocabulary_update.append( 5.06856894493 )
-inverted_update.append( 4.23837304115 )
-pos_update.append( 5.38728499413 )
-Update Create indexes
-vocabulary_build.append( 182.486777067 )
-inverted_build.append( 124.066618919 )
-pos_build.append( 91.3376348019 )
-Delete
-vocabulary_delete.append( 673.591613054 )
-inverted_delete.append( 273.96052599 )
-pos_delete.append( 19.0282289982 )
-Delete Create Indexes
-vocabulary_build.append( 180.150151014 )
-inverted_build.append( 120.970209837 )
-pos_build.append( 90.0765910149 )
-*********
-no doc = 2500
-Update
-time_populate.append( 8.56398320198 )
-time_cleantext.append( 47.3954699039 )
-vocabulary_update.append( 10.8557031155 )
-inverted_update.append( 8.89246797562 )
-pos_update.append( 7.24981784821 )
-Update Create indexes
-vocabulary_build.append( 200.523864985 )
-inverted_build.append( 125.897032022 )
-pos_build.append( 94.3957369328 )
-Delete
-vocabulary_delete.append( 1625.53267407 )
-inverted_delete.append( 664.805311918 )
-pos_delete.append( 19.0001471043 )
-Delete Create Indexes
-vocabulary_build.append( 183.315083981 )
-inverted_build.append( 122.154278994 )
-pos_build.append( 90.7250390053 )
-*********
-no doc = 2500
-Update
-time_populate.append( 8.9098238945 )
-time_cleantext.append( 47.1492578983 )
-vocabulary_update.append( 11.4916498661 )
-inverted_update.append( 8.51165604591 )
-pos_update.append( 7.17338299751 )
-Update Create indexes
-vocabulary_build.append( 200.155757904 )
-inverted_build.append( 125.509714127 )
-pos_build.append( 94.503059864 )
-Delete
-vocabulary_delete.append( 1619.38838911 )
-inverted_delete.append( 750.285568953 )
-pos_delete.append( 18.9768548012 )
-Delete Create Indexes
-vocabulary_build.append( 207.974787951 )
-inverted_build.append( 136.085434914 )
-pos_build.append( 100.514997005 )
-*********
-no doc = 2500
-Update
-time_populate.append( 8.64158797264 )
-time_cleantext.append( 52.7603881359 )
-vocabulary_update.append( 12.2606959343 )
-inverted_update.append( 9.41212916374 )
-pos_update.append( 8.37822604179 )
-Update Create indexes
-vocabulary_build.append( 229.970967054 )
-inverted_build.append( 141.708479881 )
-pos_build.append( 104.538614035 )
-Delete
-vocabulary_delete.append( 1718.9225111 )
-inverted_delete.append( 691.490729809 )
-pos_delete.append( 19.2311091423 )
-Delete Create Indexes
-vocabulary_build.append( 187.793550014 )
-inverted_build.append( 122.639168024 )
-pos_build.append( 90.4120988846 )
-*********
-no doc = 2500
-Update
-time_populate.append( 8.47857284546 )
-time_cleantext.append( 50.7797520161 )
-vocabulary_update.append( 9.99765515327 )
-inverted_update.append( 9.09216499329 )
-pos_update.append( 7.5078959465 )
-Update Create indexes
-vocabulary_build.append( 187.141598225 )
-inverted_build.append( 125.145045042 )
-pos_build.append( 94.4890267849 )
-Delete
-vocabulary_delete.append( 1616.89601302 )
-inverted_delete.append( 665.174662113 )
-pos_delete.append( 19.1850497723 )
-Delete Create Indexes
-vocabulary_build.append( 197.637856007 )
-inverted_build.append( 121.890210867 )
-pos_build.append( 91.0342400074 )
-*********
-no doc = 2500
-Update
-time_populate.append( 9.78548598289 )
-time_cleantext.append( 48.3083999157 )
-vocabulary_update.append( 11.5304100513 )
-inverted_update.append( 8.24937605858 )
-pos_update.append( 7.47128605843 )
-Update Create indexes
-vocabulary_build.append( 200.922469139 )
-inverted_build.append( 125.397344112 )
-pos_build.append( 93.6999521255 )
-Delete
-vocabulary_delete.append( 1623.38058186 )
-inverted_delete.append( 667.364274979 )
-pos_delete.append( 19.1361529827 )
-Delete Create Indexes
-vocabulary_build.append( 180.425755978 )
-inverted_build.append( 122.598528862 )
-pos_build.append( 90.8014218807 )
-*********
-no doc = 2500
-Update
-time_populate.append( 8.2513628006 )
-time_cleantext.append( 48.142359972 )
-vocabulary_update.append( 11.9535779953 )
-inverted_update.append( 8.18965983391 )
-pos_update.append( 7.26053094864 )
-Update Create indexes
-vocabulary_build.append( 200.315098047 )
-inverted_build.append( 126.707500219 )
-pos_build.append( 94.6464059353 )
-Delete
-vocabulary_delete.append( 1620.50102806 )
-inverted_delete.append( 665.41881299 )
-pos_delete.append( 19.1294379234 )
-Delete Create Indexes
-vocabulary_build.append( 181.300971985 )
-inverted_build.append( 121.893174887 )
-pos_build.append( 91.1063690186 )
-*********
-no doc = 5000
-Update
-time_populate.append( 16.4919700623 )
-time_cleantext.append( 92.8436019421 )
-vocabulary_update.append( 19.0427269936 )
-inverted_update.append( 14.1666820049 )
-pos_update.append( 11.6499359608 )
-Update Create indexes
-vocabulary_build.append( 209.315474987 )
-inverted_build.append( 129.300296068 )
-pos_build.append( 96.63539505 )
-Delete
-vocabulary_delete.append( 3240.043823 )
-inverted_delete.append( 1358.17564297 )
-pos_delete.append( 19.0664849281 )
-Delete Create Indexes
-vocabulary_build.append( 193.665540934 )
-inverted_build.append( 122.043570042 )
-pos_build.append( 90.9444220066 )
-*********
-no doc = 5000
-Update
-time_populate.append( 16.0943849087 )
-time_cleantext.append( 94.8915808201 )
-vocabulary_update.append( 18.1772041321 )
-inverted_update.append( 15.1499941349 )
-pos_update.append( 12.0875368118 )
-Update Create indexes
-vocabulary_build.append( 208.245809078 )
-inverted_build.append( 129.277935028 )
-pos_build.append( 95.9327259064 )
-Delete
-vocabulary_delete.append( 3239.05083299 )
-inverted_delete.append( 1340.3892169 )
-pos_delete.append( 19.241943121 )
-Delete Create Indexes
-vocabulary_build.append( 197.987716913 )
-inverted_build.append( 121.194113016 )
-pos_build.append( 91.2196338177 )
-*********
-no doc = 5000
-Update
-time_populate.append( 15.12424016 )
-time_cleantext.append( 95.2306139469 )
-vocabulary_update.append( 17.7697649002 )
-inverted_update.append( 14.5428900719 )
-pos_update.append( 11.5977981091 )
-
-*********
+#*********************#
+#Update               #
+#*********************#
+vocabulary_update.append(1234.85605121)
+inverted_update.append(0.454391956329)
+pos_update.append(0.358455896378)
+#*********************#
+#Delete               #
+#*********************#
+vocabulary_delete.append(1220.78412604)
+inverted_delete.append(0.844363927841)
+pos_delete.append(96.8969240189)
+#*********************#
+#Update Create Indexes#
+#*********************#
+vocabulary_build_update.append(195.194351912)
+inverted_build_update.append(130.780566931)
+pos_build_update.append(98.0494229794)
+#*********************#
+#Delete Create Indexes#
+#*********************#
+vocabulary_build_delete.append(211.983902931)
+inverted_build_delete.append(129.689410925)
+pos_build_delete.append(97.2691891193)
+*****************************

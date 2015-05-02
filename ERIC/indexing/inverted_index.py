@@ -59,7 +59,7 @@ class InvertedIndex:
 		else:
 			self.db.words.map_reduce(mapFunction, reduceFunction, "temp_collection")
 		self.db.eval(functionCreate)
-		self.db.inverted_index.ensure_index("word")
+		#self.db.inverted_index.ensure_index("word")
 
 	def updateIndex(self, startDate):
 		query = query = {"createdAt": {"$gt": startDate } }
@@ -68,6 +68,5 @@ class InvertedIndex:
 
 	#docIDs - list of documents
 	def deleteIndex(self, docIDs):
-		for docID in docIDs:
-			self.db.inverted_index.update({ }, { "$pull": { "docIDs" : docID } },  multi=True)
+		self.db.inverted_index.update({ }, { "$pull": { "docIDs" : {"$in": docIDs} } },  multi=True)
 		self.db.inverted_index.remove({"docIDs" : {"$size": 0}}, multi=True )

@@ -62,15 +62,15 @@ functionUpdate = """function(){
 
 functionDelete = """function (){
 						//update pos_index
-						var words = db.pos_index.find({}, {_id: 0, word: 1}).addOption(DBQuery.Option.noTimeout);
-						while(words.hasNext()){
-							var word = words.next();
-							var exists = db.words.count({"words.word": word.word})
+						var words = db.pos_index.find({}, {_id: 0, word: 1}).addOption(DBQuery.Option.noTimeout).toArray();
+						var list_words = [];
+						for (var idx in words){
+							var exists = db.words.count({'words.word': words[idx].word});
 							if (exists == 0){
-								// delete words that have no related document
-								db.pos_index.remove({word: word.word});
+								list_words.push(words[idx].word);
 							}
 						}
+						db.pos_index.remove({word: {$in: list_words}})
 					}"""
 
 class POSIndex:
@@ -85,8 +85,7 @@ class POSIndex:
 		else:
 			self.db.words.map_reduce(mapFunction, reduceFunction, "temp_collection")
 		self.db.eval(functionCreate)
-		self.db.pos_index.ensure_index("word")
-		self.db.temp_collection.drop()
+		#self.db.pos_index.ensure_index("word")
 	
 	#update index after docunemts are added
 	#startDate - the date
@@ -97,7 +96,8 @@ class POSIndex:
 
 	#docIDs - list of documents
 	def deleteIndex(self):
-		self.db.eval(functionDelete)
+		#self.db.eval(functionDelete)
+		self.createIndex()
 
 
 

@@ -20,6 +20,8 @@ from indexing.pos_index import POSIndex as PI
 # 4 - integer - nr of threads
 # 5 - lematizer/stemmer
 
+f = open('index_update','a')
+
 def getDates():
 	documents = Documents.objects.only("createdAt").order_by("-createdAt").first()
 	last_docDate = None
@@ -60,7 +62,7 @@ def clean(language, last_docDate=None):
 		createCleanTextField(list_of_dates[idx], list_of_dates[idx+1], language)
 	
 	end = time.time() 
-	print "time_cleantext.append(", (end - start), ")"
+	#print "time_cleantext.append(", (end - start), ")"
 
 	#TO_DO this is just a test, remove this line
 	#createCleanTextField(list_of_dates[0], list_of_dates[1], language)
@@ -100,17 +102,22 @@ def constructIndexes(dbname, op=''):
 	vocab = VI(dbname)
 	vocab.createIndex()
 	end = time.time()
-	print "vocabulary_build" + op + ".append(", (end - start) , ")"
+
+	print "vocabulary_build" + op + ".append(", (end - start) , ")"	
+	f.write("vocabulary_build" + op + ".append(" + str(end - start) + ")\n")
 	start = time.time()
 	iv = IV(dbname)
 	iv.createIndex()
 	end = time.time()
 	print "inverted_build" + op + ".append(", (end - start) , ")"
+	f.write("inverted_build" + op + ".append(" + str(end - start) + ")\n")
 	start = time.time()
 	pi = PI(dbname)
 	pi.createIndex()
 	end = time.time()
 	print "pos_build" + op + ".append(", (end - start) , ")"
+	f.write("pos_build" + op + ".append(" + str(end - start) + ")\n")
+
 
 def updateIndexes(dbname, startDate):
 	start = time.time()
@@ -118,33 +125,39 @@ def updateIndexes(dbname, startDate):
 	vocab.updateIndex(startDate)
 	end = time.time()	
 	print "vocabulary_update.append(", (end - start) , ")"
+	f.write("vocabulary_update.append(" + str(end - start) + ")\n")
 	start = time.time()
 	iv = IV(dbname)
 	iv.updateIndex(startDate)
 	end = time.time()
 	print "inverted_update.append(", (end - start) , ")"
+	f.write("inverted_update.append(" + str(end - start) + ")\n")
 	start = time.time()
 	pi = PI(dbname)
 	pi.updateIndex(startDate)
 	end = time.time()
-	print "pos_update.append(", (end - start) , ")"
-	
+	print "pos_update.append(", (end - start) , ")"	
+	f.write("pos_update.append(" + str(end - start) + ")\n")
+
 def deleteFromIndexes(dbname, docIDs):
 	start = time.time()
 	vocab = VI(dbname)
 	vocab.deleteIndex(docIDs)
 	end = time.time()
 	print "vocabulary_delete.append(", (end - start) , ")"
+	f.write("vocabulary_delete.append(" + str(end - start) + ")\n")
 	start = time.time()
 	iv = IV(dbname)
 	iv.deleteIndex(docIDs)
 	end = time.time()
 	print "inverted_delete.append(", (end - start) , ")"
+	f.write("inverted_delete.append(" + str(end - start) + ")\n")
 	start = time.time()
 	pi = PI(dbname)
 	pi.deleteIndex()
 	end = time.time()
 	print "pos_delete.append(", (end - start) , ")"
+	f.write("pos_delete.append(" + str(end - start) + ")\n")
 
 def deleteDocuments(startDate):
 	docIDs = []
@@ -154,7 +167,6 @@ def deleteDocuments(startDate):
 		document.delete()
 	for docID in docIDs:
 		Words.objects(docID=docID).delete()
-	#print docIDs
 	return docIDs
 
 def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', language='EN', initialize=0):
@@ -175,22 +187,39 @@ def main(filename, csv_delimiter = '\t', header = True, dbname = 'ERICDB', langu
 		print '#*********************#'
 		print '#Update               #'
 		print '#*********************#'
-		updateIndexes(dbname, last_wordDate)
-		print '#*********************#'
-		print '#Update Create indexes#'
-		print '#*********************#'
-		constructIndexes(dbname, '_update')
-		#print 'last date words:', last_wordDate
-		#print 'last date documents:', last_docDate		
+		f.write('#*********************#\n')
+		f.write('#Update               #\n')
+		f.write('#*********************#\n')
+		updateIndexes(dbname, last_wordDate)		
 	#elif initialize == 2: #update indexes after documents where deleted
 		print '#*********************#'
 		print '#Delete               #'
 		print '#*********************#'
+		f.write('#*********************#\n')
+		f.write('#Delete               #\n')
+		f.write('#*********************#\n')
 		docIDs = deleteDocuments(last_docDate)
 		deleteFromIndexes(dbname, docIDs)
+		
+		#testing
+		populateDB(filename, csv_delimiter, header, language)
+		Documents.objects(intText__exists = False).delete()
+		clean(language, last_docDate)
+		print '#*********************#'
+		print '#Update Create Indexes#'
+		print '#*********************#'
+		f.write('#*********************#\n')
+		f.write('#Update Create Indexes#\n')
+		f.write('#*********************#\n')
+		constructIndexes(dbname, '_update')
+		#print 'last date words:', last_wordDate
+		#print 'last date documents:', last_docDate
 		print '#*********************#'
 		print '#Delete Create Indexes#'
 		print '#*********************#'
+		f.write('#*********************#\n')
+		f.write('#Delete Create Indexes#\n')
+		f.write('#*********************#\n')
 		constructIndexes(dbname, '_delete')
 	#NamedEntities.drop_collection()
 	#buildNamedEntities()
@@ -204,3 +233,4 @@ if __name__ == "__main__":
 	language = sys.argv[5]
 	initialize = int(sys.argv[6])
 	main(filename, csv_delimiter, header, dbname, language, initialize)
+	f.close()
