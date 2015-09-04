@@ -1,3 +1,4 @@
+# coding: utf-8
 import sys
 import threading
 import time
@@ -12,9 +13,12 @@ from ddl_postgres import *
 from models.postgres_models import *
 import pony.orm as pny
 
-
-
-
+__author__ = "Ciprian-Octavian Truică"
+__copyright__ = "Copyright 2015, University Politehnica of Bucharest"
+__license__ = "GNU GPL"
+__version__ = "0.1"
+__email__ = "ciprian.truica@cs.pub.ro"
+__status__ = "Production"
 
 #this script receives 5 parameters
 # 1 - filename

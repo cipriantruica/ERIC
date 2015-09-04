@@ -8,6 +8,13 @@ from nlplib.named_entities import NamedEntitiesRegonizer
 from nlplib.clean_text import CleanText
 import pony.orm as pny
 
+__author__ = "Ciprian-Octavian Truică"
+__copyright__ = "Copyright 2015, University Politehnica of Bucharest"
+__license__ = "GNU GPL"
+__version__ = "0.1"
+__email__ = "ciprian.truica@cs.pub.ro"
+__status__ = "Production"
+
 reload(sys)  
 sys.setdefaultencoding('utf8')
 
@@ -22,54 +29,56 @@ sys.setdefaultencoding('utf8')
 # TO_DO sould see if other fields are needed
 @db_session
 def populateDatabase(elem, language='EN'):
-	cleanText = CleanText()
-	title = cleanText.replaceUTF8Char(elem[0])
-	#verify if document exists
-	#print title
-	document = Documents.get(title= title.decode("utf8"))
-	authors = []
-	tags = []
-	#document does not exist in the database, add new document
-	if not document:		
-		title = title.decode("utf8")
-		rawText = cleanText.replaceUTF8Char(elem[1])		
-		intText = cleanText.cleanText(elem[1], language)
+	try:
+		cleanText = CleanText()
+		title = cleanText.replaceUTF8Char(elem[0])
+		#verify if document exists
+		#print title
+		document = Documents.get(title= title.decode("utf8"))
+		authors = []
+		tags = []
+		#document does not exist in the database, add new document
+		if not document:		
+			title = title.decode("utf8")
+			rawText = cleanText.replaceUTF8Char(elem[1])		
+			intText = cleanText.cleanText(elem[1], language)
+			
+			if language == 'EN':
+				if elem[2][3] == ',':
+					date = datetime.strptime(elem[2][:-6], "%a, %d %b %Y %H:%M:%S")
+				else:
+					date = datetime.strptime(elem[2], "%Y/%m/%d")
+			else:			
+				date = datetime.strptime(elem[2], "%d/%m/%Y")
+			
+			language = language
+			#authors 
+			#verify list's length - maybe it does not have the author field
+			if len(elem) > 4:
+				for name in utils.getAuthorName(elem[4]):
+					author = Authors.get(firstname=name[0].decode("utf8"), lastname=name[1].decode("utf8"))
+					if not author:
+						author = Authors(firstname=name[0].decode("utf8"), lastname=name[1].decode("utf8"))
+					authors.append(author)
 		
-		if language == 'EN':
-			if elem[2][3] == ',':
-				date = datetime.strptime(elem[2][:-6], "%a, %d %b %Y %H:%M:%S")
-			else:
-				date = datetime.strptime(elem[2], "%Y/%m/%d")
-		else:			
-			date = datetime.strptime(elem[2], "%d/%m/%Y")
+		for c in cleanText.splitString(elem[3]):
+			tag = Tags.get(tag=c)
+			if not tag:
+				tag = Tags(tag=c)
+			tags.append(tag)
 		
-		language = language
-		#authors 
-		#verify list's length - maybe it does not have the author field
-		if len(elem) > 4:
-			for name in utils.getAuthorName(elem[4]):
-				author = Authors.get(firstname=name[0].decode("utf8"), lastname=name[1].decode("utf8"))
-				if not author:
-					author = Authors(firstname=name[0].decode("utf8"), lastname=name[1].decode("utf8"))
-				authors.append(author)
-	
-	for c in cleanText.splitString(elem[3]):
-		tag = Tags.get(tag=c)
-		if not tag:
-			tag = Tags(tag=c)
-		tags.append(tag)
-	
-	if not document:		
-		try:
-			if authors:
-				document = Documents(title=title, rawText=rawText.decode("utf8"), intText=intText.decode("utf8"), date=date, language=language, authorID=authors, tagID=tags)
-			else:
-				document = Documents(title=title, rawText=rawText.decode("utf8"), intText=intText.decode("utf8"), date=date, language=language, tagID=tags)
-		except Exception as e:
-			print "Insert Error!!!", e
-	else:
-		document.tags = tags
-	
+		if not document:		
+			try:
+				if authors:
+					document = Documents(title=title, rawText=rawText.decode("utf8"), intText=intText.decode("utf8"), date=date, language=language, authorID=authors, tagID=tags)
+				else:
+					document = Documents(title=title, rawText=rawText.decode("utf8"), intText=intText.decode("utf8"), date=date, language=language, tagID=tags)
+			except Exception as e:
+				print "Insert Error!!!", e
+		else:
+			document.tags = tags
+	except Exception as e:
+		print "Some shitty error!!!", e
 	
 
 #this functions adds to the documents collection the cleanText and words labels
