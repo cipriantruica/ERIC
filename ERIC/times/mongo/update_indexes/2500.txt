@@ -1,0 +1,40 @@
+#no doc = 2500
+vocabulary_update = []
+inverted_update = []
+pos_update = []
+vocabulary_build_update = []
+inverted_build_update = []
+pos_build_update = []
+vocabulary_delete = []
+inverted_delete = []
+pos_delete = []
+vocabulary_build_delete = []
+inverted_build_delete = []
+pos_build_delete = []
+vocabulary_update.append(1433.92814207)
+inverted_update.append(288.768049002)
+pos_update.append(258.491556168)
+vocabulary_delete.append(1151.28381109)
+inverted_delete.append(2.195759058)
+pos_delete.append(92.014218092)
+vocabulary_build_update.append(206.545148134)
+inverted_build_update.append(124.698348045)
+pos_build_update.append(95.195207119)
+vocabulary_build_delete.append(187.177232981)
+inverted_build_delete.append(127.118290901)
+pos_build_delete.append(94.4062399864)
+vocabulary_update.append(1173.85659409)
+inverted_update.append(0.358724117279)
+pos_update.append(0.387814998627)
+vocabulary_delete.append(1169.23069692)
+inverted_delete.append(0.821393013)
+pos_delete.append(94.2888140678)
+vocabulary_build_update.append(201.821012974)
+inverted_build_update.append(127.443979979)
+pos_build_update.append(95.2752761841)
+vocabulary_build_delete.append(202.999106169)
+inverted_build_delete.append(126.167501926)
+pos_build_delete.append(94.6435289383)
+
+print '"update:","', round(sum(inverted_update)/len(inverted_update), 2), '","', round(sum(inverted_build_update)/len(inverted_build_update), 2),'","', round(sum(vocabulary_update)/len(vocabulary_update), 2), '","',round(sum(vocabulary_build_update)/len(vocabulary_build_update), 2), '","',round(sum(pos_update)/len(pos_update), 2), '","',round(sum(pos_build_update)/len(pos_build_update), 2),'"'
+print '"delete IV:","', round(sum(inverted_delete)/len(inverted_delete), 2), '","',round(sum(inverted_build_delete)/len(inverted_build_delete), 2), '","',round(sum(vocabulary_delete)/len(vocabulary_delete), 2), '","',round(sum(vocabulary_build_delete)/len(vocabulary_build_delete), 2), '","',round(sum(pos_delete)/len(pos_delete), 2), '","',round(sum(pos_build_delete)/len(pos_build_delete), 2),'"'

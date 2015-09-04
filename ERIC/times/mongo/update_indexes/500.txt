@@ -1,0 +1,64 @@
+#500
+vocabulary_update = []
+inverted_update = []
+pos_update = []
+vocabulary_build_update = []
+inverted_build_update = []
+pos_build_update = []
+vocabulary_delete = []
+inverted_delete = []
+pos_delete = []
+vocabulary_build_delete = []
+inverted_build_delete = []
+pos_build_delete = []
+vocabulary_update.append(1268.37727213)
+inverted_update.append(148.300236225)
+pos_update.append(132.281346083)
+vocabulary_delete.append(1141.37649608)
+inverted_delete.append(1.92152404785)
+pos_delete.append(90.8879759312)
+vocabulary_build_update.append(197.268795967)
+inverted_build_update.append(122.324357986)
+pos_build_update.append(92.4456219673)
+vocabulary_build_delete.append(205.655544996)
+inverted_build_delete.append(122.966219902)
+pos_build_delete.append(91.2829349041)
+vocabulary_update.append(1123.10006022)
+inverted_update.append(0.755270957947)
+pos_update.append(0.622653007507)
+vocabulary_delete.append(1121.80160999)
+inverted_delete.append(0.799050807953)
+pos_delete.append(91.7529630661)
+vocabulary_build_update.append(182.153846979)
+inverted_build_update.append(127.090582848)
+pos_build_update.append(90.9981870651)
+vocabulary_build_delete.append(196.124070168)
+inverted_build_delete.append(122.707914114)
+pos_build_delete.append(93.0898799896)
+vocabulary_update.append(1131.14420986)
+inverted_update.append(0.754586935043)
+pos_update.append(0.595418930054)
+vocabulary_delete.append(1130.48639894)
+inverted_delete.append(0.807540178299)
+pos_delete.append(92.1289319992)
+vocabulary_build_update.append(182.612964869)
+inverted_build_update.append(122.451899052)
+pos_build_update.append(91.4518318176)
+vocabulary_build_delete.append(195.24534893)
+inverted_build_delete.append(121.682805061)
+pos_build_delete.append(91.8748428822)
+vocabulary_update.append(1133.16432881)
+inverted_update.append(0.787437915802)
+pos_update.append(0.605332136154)
+vocabulary_delete.append(1123.74236202)
+inverted_delete.append(0.786774158478)
+pos_delete.append(90.5310869217)
+vocabulary_build_update.append(196.454441071)
+inverted_build_update.append(122.661164999)
+pos_build_update.append(91.1935510635)
+vocabulary_build_delete.append(196.368565083)
+inverted_build_delete.append(122.09027791)
+pos_build_delete.append(91.4025080204)
+
+print '"update:","', round(sum(inverted_update)/len(inverted_update), 2), '","', round(sum(inverted_build_update)/len(inverted_build_update), 2),'","', round(sum(vocabulary_update)/len(vocabulary_update), 2), '","',round(sum(vocabulary_build_update)/len(vocabulary_build_update), 2), '","',round(sum(pos_update)/len(pos_update), 2), '","',round(sum(pos_build_update)/len(pos_build_update), 2),'"'
+print '"delete IV:","', round(sum(inverted_delete)/len(inverted_delete), 2), '","',round(sum(inverted_build_delete)/len(inverted_build_delete), 2), '","',round(sum(vocabulary_delete)/len(vocabulary_delete), 2), '","',round(sum(vocabulary_build_delete)/len(vocabulary_build_delete), 2), '","',round(sum(pos_delete)/len(pos_delete), 2), '","',round(sum(pos_build_delete)/len(pos_build_delete), 2),'"'
