@@ -1,13 +1,20 @@
 # coding: utf-8
-from __future__ import division
+
+__author__ = "Ciprian-Octavian Truică"
+__copyright__ = "Copyright 2015, University Politehnica of Bucharest"
+__license__ = "GNU GPL"
+__version__ = "0.1"
+__email__ = "ciprian.truica@cs.pub.ro"
+__status__ = "Production"
+
 from gensim.utils import lemmatize
 from nlplib.clean_text import CleanText
 from nltk.corpus import wordnet
-from nltk.tag.stanford import POSTagger
-from pattern.fr import parse
+#from nltk.tag.stanford import POSTagger
+from pattern.fr import parse as parseFR
+from pattern.en import parse as parseEN
 from nltk.corpus import stopwords
 
-#TO_DO modify this class to accept french also
 class LemmatizeText:
 	class Word():
 		word = ""
@@ -24,24 +31,21 @@ class LemmatizeText:
 
 	def createLemmaText(self):
 		ct = CleanText()
+		text = self.rawText
+		text = text.lower()
+		text = ct.removeStopWords(text, self.language)
+		text = ct.removePunctuation(text)
 		if self.language == 'EN':
-			lemmas = lemmatize(ct.removeStopWords(self.rawText))
-			for word in lemmas:
-				elems = word.split('/')
-				self.words.append((elems[0], elems[1]))
-			self.cleanText = ' '.join(word[0] for word in self.words)
-		if self.language == 'FR':			
-			#st = POSTagger('./nlplib/stanford_pos/french.tagger', './nlplib/stanford_pos/stanford-postagger.jar', encoding='utf-8') 
-			text = self.rawText
-			text = text.lower()
-			text = ct.removeStopWords(text, self.language)
-			text= ct.removePunctuation(text)	
-			text = parse(text, tags = False, chunks = False, lemmata=True).split()
-			for word in text[0]:
-				#if word[2] 	not in stopwords.words("french"):
-				if word[1][:2] in ['RB', 'NN', 'VB', 'JJ']:
-					self.words.append((word[2], word[1][:2]))
-			self.cleanText = ' '.join(word[0] for word in self.words)
+			text = parseEN(text, tags = False, chunks = False, lemmata=True).split()
+		elif self.language == 'FR':
+			text = parseFR(text, tags = False, chunks = False, lemmata=True).split()
+		try:
+			if text:
+				for word in text[0]:
+					self.words.append((word[2].lower(), word[1][:2]))
+				self.cleanText = ' '.join(word[0] for word in self.words)
+		except Exception as e:
+			print e, self.rawText
 
 
 	def createLemmas(self):
@@ -51,9 +55,9 @@ class LemmatizeText:
 			#sort wordList by word count
 			self.wordList = sorted(self.wordList, key=lambda word: word.count)
 			#calculate TF
-			maxF = self.wordList[-1].count
+			maxF = float(self.wordList[-1].count)
 			for idx in xrange(0,len(self.wordList), 1):
-				self.wordList[idx].tf = round(0.5 + (0.5 * self.wordList[idx].count)/maxF, 2)
+				self.wordList[idx].tf = round(0.5 + (0.5 * float(self.wordList[idx].count))/maxF, 2)
 
 	def append(self, word, wtype):
 		if word:
